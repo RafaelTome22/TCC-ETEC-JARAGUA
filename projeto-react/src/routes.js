@@ -1,16 +1,19 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Routes, Route, BrowserRouter} from 'react-router-dom';
 import LoginPage from './PAGES/Tlogin/log.js';
 import HomePage from './PAGES/home/home.js';
 import SignupPage from './PAGES/Tcadastro/cad.js';
 
+function RoutesApp(){
+    return(
+        <BrowserRouter>  
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<SignupPage />} />
+                <Route path="/home" element={<HomePage />} />
+            </Routes>
+        </BrowserRouter>  
+    );
+};
 
-const Routes = () => (
- <Switch>
-    <Route path="/login" component={LoginPage} />
-    <Route path="/" component={SignupPage} />
-    <Route path="/home" component={HomePage} />
-</Switch>
-);
-
-export default Routes;
+export default RoutesApp;

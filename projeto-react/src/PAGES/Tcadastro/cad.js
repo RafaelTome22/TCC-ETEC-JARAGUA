@@ -1,6 +1,5 @@
 
 import React, {useState} from 'react';
-import {navigate} from 'react-router-dom'
 import {insercao} from '../../services/funcaoBD';
 import '../../styles/cad.css'
 
@@ -11,7 +10,7 @@ function SignupPage() {
     const [email, setEmail] = useState("");
 
   return (
-    <div class='main'>
+    <div className='main'>
       
         <form>
           <label>Nome:</label> <br/> 

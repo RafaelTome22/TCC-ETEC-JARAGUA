@@ -1,5 +1,5 @@
 import {db} from "../BD/firebase";
-import {ref, get, push, set} from 'firebase/database';
+import {ref, push, set} from 'firebase/database';
 
 /*export const teste = (nome, sobrenome) => {
     alert(nome + sobrenome)
