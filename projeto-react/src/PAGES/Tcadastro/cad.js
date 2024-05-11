@@ -1,26 +1,37 @@
-
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {insercao} from '../../services/funcaoBD';
 import '../../styles/cad.css';
-import './anim.js'
+
 
 library.add(fab);
 
+
+
+function gira(){
+  const container = document.getElementById('container');
+  const registerBtn = document.getElementById('register');
+
+  registerBtn.addEventListener('click', () => {
+      container.classList.add("active");
+  });
+
+}
+
+function remove(){
+  const container = document.getElementById('container');
+  const loginBtn = document.getElementById('login');
+
+  loginBtn.addEventListener('click', () => {
+      container.classList.remove("active");
+  });
+}
+
+
+
 function SignupPage() {
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = './anim.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-        document.body.removeChild(script);
-    };
-});
-
 
     const [nome, setNome] = useState(""); 
     const [senha, setPassword] = useState(""); 
@@ -48,9 +59,23 @@ function SignupPage() {
             </div> {/* fim dos icons */}
 
             <span>Use seu Email e Senha</span> {/* inicio dos inputs */} 
-              <input type='text' placeholder='Nome'/> 
-              <input type='email' placeholder='Email'/>
-              <input type='password' placeholder='Senha'/>
+              <input type='text' 
+              value={nome}
+              placeholder='Nome'
+              onChange={(e) => setNome(e.target.value)}
+              /> 
+
+              <input type='email' 
+              value={email}
+              placeholder='Email'
+              onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input type='password' 
+              value={senha}
+              placeholder='Senha'
+              onChange={(e) => setPassword(e.target.value)}
+              />
               <button onClick={async ()=> insercao([nome, email, senha], setNome, setEmail, setPassword)}>Cadastrar</button>
           </form>
         </div> {/* fim docadastro */} 
@@ -86,12 +111,12 @@ function SignupPage() {
             <div className='toggle-panel toggle-left'>
               <h1>Bem-vindo!</h1>
               <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
-              <button className='hidden' id='login'>Login</button>
+              <button className='hidden' id='login' onClick={ ()=> remove()}>Login</button>
             </div>
             <div className='toggle-panel toggle-right'>
               <h1>Olá, visitante!</h1>
               <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
-              <button className='hidden' id='register'>Cadastre-se</button>
+              <button className='hidden' id='register' onClick={ ()=> gira()}>Cadastre-se</button>
             </div>
           </div>
         </div>
@@ -131,8 +156,5 @@ function SignupPage() {
     */
     
   );
-
-  
 }
-
 export default SignupPage;
