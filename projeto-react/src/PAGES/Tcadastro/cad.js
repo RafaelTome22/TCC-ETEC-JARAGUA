@@ -1,15 +1,103 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import {insercao} from '../../services/funcaoBD';
-import '../../styles/cad.css'
+import '../../styles/cad.css';
+import './anim.js'
+
+library.add(fab);
 
 function SignupPage() {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = './anim.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+        document.body.removeChild(script);
+    };
+});
+
 
     const [nome, setNome] = useState(""); 
     const [senha, setPassword] = useState(""); 
     const [email, setEmail] = useState("");
 
   return (
+
+      <div className='container' id='container'>
+        <div className='form-container sing-up'> {/* cadastro */} 
+          <form>
+            <h1>Cadastra-se já!</h1> 
+            <div className='social-icons'> {/* inicio dos icons */}
+              <a href='#' className='icon'> 
+                <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'facebook-f']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'github']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+              </a>
+            </div> {/* fim dos icons */}
+
+            <span>Use seu Email e Senha</span> {/* inicio dos inputs */} 
+              <input type='text' placeholder='Nome'/> 
+              <input type='email' placeholder='Email'/>
+              <input type='password' placeholder='Senha'/>
+              <button onClick={async ()=> insercao([nome, email, senha], setNome, setEmail, setPassword)}>Cadastrar</button>
+          </form>
+        </div> {/* fim docadastro */} 
+
+        <div className='form-container sing-in'> {/* login */} 
+          <form>
+            <h1>Entre com</h1> 
+            <div className='social-icons'> {/* inicio dos icons */}
+              <a href='#' className='icon'> 
+                <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'facebook-f']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'github']} />
+              </a>
+              <a href='#' className='icon'>
+                <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+              </a>
+            </div> {/* fim dos icons */}
+
+            <span>Ou use seu Email e Senha</span> {/* inicio dos inputs */} 
+              <input type='email' placeholder='Email'/>
+              <input type='password' placeholder='Senha'/>
+              <a href='#'>Esqueceu sua senha?</a>
+              <button>Login</button>
+          </form>
+        </div> {/* fim do login */}
+
+        <div className='toggle-container'>
+          <div className='toggle'>
+            <div className='toggle-panel toggle-left'>
+              <h1>Bem-vindo!</h1>
+              <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
+              <button className='hidden' id='login'>Login</button>
+            </div>
+            <div className='toggle-panel toggle-right'>
+              <h1>Olá, visitante!</h1>
+              <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
+              <button className='hidden' id='register'>Cadastre-se</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    /*
     <div className='main'>
       
         <form>
@@ -39,8 +127,12 @@ function SignupPage() {
 
         <button onClick={async ()=> insercao([nome, email, senha], setNome, setEmail, setPassword)}>Cadastra-se</button>
     </div>
+
+    */
     
   );
+
+  
 }
 
 export default SignupPage;
