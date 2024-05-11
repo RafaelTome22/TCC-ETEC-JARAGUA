@@ -22,6 +22,7 @@ export const insercao = async (dados) => {
             senha: dados[2]
         });
         alert('Usuário cadastrado com sucesso!');
+        
     } catch (error) {
         console.error("Error adding user to database:", error.message);
         alert("Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente mais tarde.");

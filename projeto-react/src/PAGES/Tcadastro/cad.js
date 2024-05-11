@@ -29,8 +29,6 @@ function remove(){
   });
 }
 
-
-
 function SignupPage() {
 
     const [nome, setNome] = useState(""); 
@@ -76,7 +74,7 @@ function SignupPage() {
               placeholder='Senha'
               onChange={(e) => setPassword(e.target.value)}
               />
-              <button onClick={async ()=> insercao([nome, email, senha], setNome, setEmail, setPassword)}>Cadastrar</button>
+              <button onClick={async (e)=> {e.preventDefault(); await insercao([nome, email, senha], setNome, setEmail, setPassword)}}>Cadastrar</button>
           </form>
         </div> {/* fim docadastro */} 
 
@@ -111,12 +109,12 @@ function SignupPage() {
             <div className='toggle-panel toggle-left'>
               <h1>Bem-vindo!</h1>
               <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
-              <button className='hidden' id='login' onClick={ ()=> remove()}>Login</button>
+              <button className='hidden' id='login' onClick={async ()=> remove()}>Login</button>
             </div>
             <div className='toggle-panel toggle-right'>
               <h1>Olá, visitante!</h1>
               <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
-              <button className='hidden' id='register' onClick={ ()=> gira()}>Cadastre-se</button>
+              <button className='hidden' id='register' onClick={async ()=> gira()}>Cadastre-se</button>
             </div>
           </div>
         </div>
