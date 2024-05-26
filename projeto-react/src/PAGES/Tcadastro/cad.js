@@ -2,30 +2,14 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from '../../BD/firebase';
+import bcrypt from 'bcryptjs';
+import { useNavigate } from 'react-router-dom';
 import { insercao } from '../../services/funcaoBD';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import bcrypt from 'bcryptjs'; 
 import '../../styles/cad.css';
 
 library.add(fab);
-
-function gira() {
-  const container = document.getElementById('container');
-  const registerBtn = document.getElementById('register');
-
-  registerBtn.addEventListener('click', () => {
-    container.classList.add("active");
-  });
-}
-
-function remove() {
-  const container = document.getElementById('container');
-  const loginBtn = document.getElementById('login');
-
-  loginBtn.addEventListener('click', () => {
-    container.classList.remove("active");
-  });
-}
 
 async function hashPassword(password) {
   const saltRounds = 10;
@@ -34,38 +18,56 @@ async function hashPassword(password) {
 }
 
 function SignupPage() {
-
   const [nome, setNome] = useState("");
   const [senha, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (!nome || !email || !senha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
     const hashedPassword = await hashPassword(senha);
     await insercao([nome, email, hashedPassword], setNome, setEmail, setPassword);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!loginEmail || !loginSenha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
     try {
-      const auth = getAuth();
       await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-      history.push("/home");
+      navigate("/home");
     } catch (error) {
       console.error("Error logging in:", error);
-      // Tratamento de erro
+      alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/home");
+    } catch (error) {
+      console.error("Error logging in with Google:", error);
+      alert("Erro ao fazer login com Google. Tente novamente.");
     }
   };
 
   return (
-    <div className='container' id='container'>
-      <div className='form-container sing-up'>
-        <form>
-          <h1>Cadastra-se já!</h1>
+    <div className={`container ${isActive ? 'active' : ''}`} id='container'>
+      <div className='form-container sign-up'>
+        <form onSubmit={handleSignup}>
+          <h1>Cadastre-se já!</h1>
           <div className='social-icons'>
-            <a href='#' className='icon'>
+            <a href='#' className='icon' onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
             </a>
             <a href='#' className='icon'>
@@ -97,15 +99,15 @@ function SignupPage() {
             placeholder='Senha'
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleSignup}>Cadastrar</button>
+          <button type='submit'>Cadastrar</button>
         </form>
       </div>
 
-      <div className='form-container sing-in'>
-        <form>
+      <div className='form-container sign-in'>
+        <form onSubmit={handleLogin}>
           <h1>Entre com</h1>
           <div className='social-icons'>
-            <a href='#' className='icon'>
+            <a href='#' className='icon' onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
             </a>
             <a href='#' className='icon'>
@@ -119,21 +121,20 @@ function SignupPage() {
             </a>
           </div>
           <span>Ou use seu Email e Senha</span>
-          <input 
-              type='email' 
-              value={loginEmail}
-              placeholder='Email' 
-              onChange={(e) => setLoginEmail(e.target.value)}
+          <input
+            type='email'
+            value={loginEmail}
+            placeholder='Email'
+            onChange={(e) => setLoginEmail(e.target.value)}
           />
-          <input 
-              type='password' 
-              value={loginSenha}
-              placeholder='Senha' 
-              onChange={(e) => setLoginSenha(e.target.value)}
+          <input
+            type='password'
+            value={loginSenha}
+            placeholder='Senha'
+            onChange={(e) => setLoginSenha(e.target.value)}
           />
-
           <a href='#'>Esqueceu sua senha?</a>
-          <button onClick={handleLogin}>Login</button>
+          <button type='submit'>Login</button>
         </form>
       </div>
 
@@ -142,12 +143,12 @@ function SignupPage() {
           <div className='toggle-panel toggle-left'>
             <h1>Bem-vindo!</h1>
             <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
-            <button className='hidden' id='login' onClick={remove}>Login</button>
+            <button id='login' onClick={() => setIsActive(false)}>Login</button>
           </div>
           <div className='toggle-panel toggle-right'>
             <h1>Olá, visitante!</h1>
             <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
-            <button className='hidden' id='register' onClick={gira}>Cadastre-se</button>
+            <button id='register' onClick={() => setIsActive(true)}>Cadastre-se</button>
           </div>
         </div>
       </div>

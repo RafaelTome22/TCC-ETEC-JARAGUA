@@ -1,32 +1,22 @@
-import {db} from "../BD/firebase";
-import {ref, push, set} from 'firebase/database';
+import { db } from '../BD/firebase';
+import { ref, set } from 'firebase/database';
 
-export const insercao = async (dados) => {
-    // Check if any field is empty
-    for(var itens = 0; itens < dados.length; itens++){ // for/gambiarra para testar cada item
-        if(dados[itens] === ""){ 
-            alert("Campos Vazios")
-            return; // sair da func sem enrolar 
-        }
-    }
-
-    const refCadastro = ref(db, 'Cadastro');
-    const codigoCad = push(refCadastro);
-
-    console.log("New User Key:", codigoCad.key);
-
-    try {
-        await set(codigoCad, {
-            nome: dados[0],
-            email: dados[1],
-            senha: dados[2]
-        });
-        alert('Usuário cadastrado com sucesso!');
-        
-    } catch (error) {
-        console.error("Error adding user to database:", error.message);
-        alert("Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente mais tarde.");
-    }
+export async function insercao(userData, setNome, setEmail, setPassword) {
+  const [nome, email, hashedPassword] = userData;
+  try {
+    await set(ref(db, 'users/' + nome), {
+      username: nome,
+      email: email,
+      password: hashedPassword
+    });
+    // Limpar os campos do formulário após inserção
+    setNome('');
+    setEmail('');
+    setPassword('');
+    alert("Seja Bem-vindo(a) " + nome)
+  } catch (error) {
+    console.error("Erro ao inserir dados:", error);
+  }
 }
 
 
