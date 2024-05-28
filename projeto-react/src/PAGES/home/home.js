@@ -1,11 +1,18 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext';
+
 function HomePage() {
-  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div>
       <h1>Home Page</h1>
-      <p>opaaa</p>
+      <button onClick={handleLogout}>Logout</button>
+      <p>Opaaa</p>
     </div>
   );
 }

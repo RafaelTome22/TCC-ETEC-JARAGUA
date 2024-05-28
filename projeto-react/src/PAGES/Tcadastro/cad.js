@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, googleProvider } from '../../BD/firebase';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
 import { insercao } from '../../services/funcaoBD';
+import { useAuth } from '../../AuthContext';
 import '../../styles/cad.css';
 
 library.add(fab);
@@ -25,6 +26,7 @@ function SignupPage() {
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -32,8 +34,15 @@ function SignupPage() {
       alert("Por favor, preencha todos os campos.");
       return;
     }
-    const hashedPassword = await hashPassword(senha);
-    await insercao([nome, email, hashedPassword], setNome, setEmail, setPassword);
+    try {
+      const hashedPassword = await hashPassword(senha);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+      await insercao([nome, email, hashedPassword], setNome, setEmail, setPassword);
+      navigate("/home");
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+      alert("Erro ao cadastrar. Tente novamente.");
+    }
   };
 
   const handleLogin = async (e) => {
@@ -46,7 +55,7 @@ function SignupPage() {
       await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
       navigate("/home");
     } catch (error) {
-      console.error("Error logging in:", error);
+      console.error("Erro ao fazer login:", error);
       alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
     }
   };
@@ -56,10 +65,15 @@ function SignupPage() {
       await signInWithPopup(auth, googleProvider);
       navigate("/home");
     } catch (error) {
-      console.error("Error logging in with Google:", error);
+      console.error("Erro ao fazer login com Google:", error);
       alert("Erro ao fazer login com Google. Tente novamente.");
     }
   };
+
+  if (currentUser) {
+    navigate("/home");
+    return null;
+  }
 
   return (
     <div className={`container ${isActive ? 'active' : ''}`} id='container'>

@@ -1,4 +1,4 @@
-import { db } from '../BD/firebase';
+import { db } from '../BD/firebase';  // Corrija o caminho se necessário
 import { ref, set } from 'firebase/database';
 
 export async function insercao(userData, setNome, setEmail, setPassword) {
