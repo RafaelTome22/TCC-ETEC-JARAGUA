@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, googleProvider } from '../../BD/firebase';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +37,10 @@ function SignupPage() {
     try {
       const hashedPassword = await hashPassword(senha);
       const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-      await insercao([nome, email, hashedPassword], setNome, setEmail, setPassword);
+      await insercao([nome, email, hashedPassword]);
+      setNome('');
+      setEmail('');
+      setPassword('');
       navigate("/home");
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
