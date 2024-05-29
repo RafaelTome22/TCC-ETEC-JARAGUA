@@ -101,7 +101,7 @@ function HomePage() {
     <div>
       <div id="popup" style={{ visibility: popupVisible ? 'visible' : 'hidden' }}>
         <h3>Menu</h3>
-        <button id="liga">Liga</button>
+        
         <h4>Fonte</h4>
 
         
@@ -111,23 +111,21 @@ function HomePage() {
         <button onClick={toggleItalic} className="italico">I</button>
 
 
-        <div id="Dauto">
+          <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="deute"   min="0" max="100" onChange={changeDeuteColor} />
-          <br /><br />
-          <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="prota"  min="0" max="100" onChange={changeProtaColor} />
-          <br /><br />
-          <a className="a" style={{ display: 'inline-block'}}>Tetranotopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="trito"  min="0" max="100" step="1" onChange={changeTritoColor} />
-        </div>
+            <input type="radio" name="opcao" />
+           <input type="range" id="deute"   min="0" max="100" onChange={changeDeuteColor} />
+           <br /><br />
+            <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
+            <input type="radio" name="opcao" />
+            <input type="range" id="prota"  min="0" max="100" onChange={changeProtaColor} />
+            <br /><br />
+          </div>
       </div>
-      <button className="menu" onClick={togglePopupVisibility}><img className="logo" src="D:/FOCOS.png" alt="focos" /></button>
+      <button className="menu" onClick={togglePopupVisibility}>Menu</button>
       <p>Muda Fonte</p>
       <p>Muda Fonte</p>
+
       <div className="Cores">
         <img id="image" src='https://cdn-icons-png.flaticon.com/512/1372/1372997.png' alt="imagem" />
       </div>

@@ -1,3 +1,10 @@
+body{
+  width: 500px;
+  height: 500px;
+}
+
+
+
 .menu{
   float: right;
   width: 50px;
@@ -20,6 +27,8 @@ img{
   height: 500px;
   background-color: rgb(235, 234, 234);
   float: right;
+  
+
 }
 
 #deute{
@@ -74,13 +83,15 @@ img{
   height: 100px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  float: left;
 }
 
 .Cores > img{
   width: 500px;
   height: 500px;
+
 }
 
 #liga{
