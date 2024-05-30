@@ -10,6 +10,9 @@ body{
   width: 50px;
   height: 50px;
   cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 img{
@@ -19,6 +22,7 @@ img{
   position: static;
   margin-right: -16px;
   margin-top: -10px;
+  
 }
 
 #popup{
@@ -27,12 +31,16 @@ img{
   height: 500px;
   background-color: rgb(235, 234, 234);
   float: right;
+  right: 0;
+  top: 0;
+  position: fixed;
   
 
 }
 
 #deute{
   width: 200px;
+  
 }
 
 #prota{
@@ -41,6 +49,7 @@ img{
 
 #trito {
   width: 200px;
+  
 }
 
 .italico{
@@ -91,6 +100,9 @@ img{
 .Cores > img{
   width: 500px;
   height: 500px;
+  position: fixed ;
+  left: 0;
+  bottom: 0;
 
 }
 
@@ -101,4 +113,14 @@ img{
   float: right;
   margin-top: -55px;
   cursor: pointer;
+}
+
+.texto{
+  position: fixed;
+  top: 0;
+}
+.logout{
+  position: fixed;
+  left: 0;
+  top: 0;
 }

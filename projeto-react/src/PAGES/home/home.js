@@ -51,15 +51,11 @@ function HomePage() {
     }
   }
 
+  
   function toggleItalic() {
     const paragraphs = document.getElementsByTagName('p');
     for (let i = 0; i < paragraphs.length; i++) {
       paragraphs[i].style.fontStyle = 'italic';
-    }
-
-    const headings = document.getElementsByTagName('h1');
-    for (let i = 0; i < headings.length; i++) {
-      headings[i].style.fontWeight = '700';
     }
   }
 
@@ -114,24 +110,31 @@ function HomePage() {
           <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
             <input type="radio" name="opcao" />
-           <input type="range" id="deute"   min="0" max="100" onChange={changeDeuteColor} />
+           <input type="range" id="deute"   min="0" max="100" value="0" onChange={changeDeuteColor} />
            <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
             <input type="radio" name="opcao" />
-            <input type="range" id="prota"  min="0" max="100" onChange={changeProtaColor} />
+            <input type="range" id="prota"  min="0" max="100" value="0" onChange={changeProtaColor} />
             <br /><br />
+            <a className="a" style={{ display: 'inline-block'}}>Tetranotopia</a>
+          <input type="radio" name="opcao" />
+          <input type="range" id="trito"  min="0" max="100" step="1" value="0" onChange={changeTritoColor} />
           </div>
       </div>
+
       <button className="menu" onClick={togglePopupVisibility}>Menu</button>
-      <p>Muda Fonte</p>
-      <p>Muda Fonte</p>
+
+      <div className="texto">
+        <p>Muda Fonte</p>
+      </div>
+      
 
       <div className="Cores">
         <img id="image" src='https://cdn-icons-png.flaticon.com/512/1372/1372997.png' alt="imagem" />
       </div>
 
       
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
     </div>
 
   );
