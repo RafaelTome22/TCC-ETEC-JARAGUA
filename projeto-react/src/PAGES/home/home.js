@@ -110,15 +110,15 @@ function HomePage() {
           <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
             <input type="radio" name="opcao" />
-           <input type="range" id="deute"   min="0" max="100" value="0" onChange={changeDeuteColor} />
+           <input type="range" id="deute"   min="0" max="100"  onChange={changeDeuteColor} />
            <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
             <input type="radio" name="opcao" />
-            <input type="range" id="prota"  min="0" max="100" value="0" onChange={changeProtaColor} />
+            <input type="range" id="prota"  min="0" max="100"  onChange={changeProtaColor} />
             <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Tetranotopia</a>
           <input type="radio" name="opcao" />
-          <input type="range" id="trito"  min="0" max="100" step="1" value="0" onChange={changeTritoColor} />
+          <input type="range" id="trito"  min="0" max="100" step="1"  onChange={changeTritoColor} />
           </div>
       </div>
 
