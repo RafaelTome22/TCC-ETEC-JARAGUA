@@ -47,7 +47,13 @@ function HomePage() {
   function toggleBold() {
     const paragraphs = document.getElementsByTagName('p');
     for (let i = 0; i < paragraphs.length; i++) {
-      paragraphs[i].style.fontWeight = '700';
+
+      if(paragraphs[i].style.fontWeight === '700'){
+        paragraphs[i].style.fontWeight = 'normal';
+      }
+      else{
+        paragraphs[i].style.fontWeight = '700';
+      }
     }
   }
 
@@ -55,7 +61,13 @@ function HomePage() {
   function toggleItalic() {
     const paragraphs = document.getElementsByTagName('p');
     for (let i = 0; i < paragraphs.length; i++) {
-      paragraphs[i].style.fontStyle = 'italic';
+
+      if(paragraphs[i].style.fontStyle === 'italic'){
+        paragraphs[i].style.fontStyle = 'normal';
+      }
+      else{
+        paragraphs[i].style.fontStyle = 'italic';
+      }
     }
   }
 
