@@ -142,7 +142,7 @@ function HomePage() {
       
 
       <div className="Cores">
-        <img id="image" src='https://cdn-icons-png.flaticon.com/512/1372/1372997.png' alt="imagem" />
+        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' alt="imagem" />
       </div>
 
       
