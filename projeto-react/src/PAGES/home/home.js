@@ -10,9 +10,29 @@ function HomePage() {
   };
 
   const [popupVisible, setPopupVisible] = useState(true);
+  const [disabled1, setDisabled1] = useState(false);
+  const [disabled2, setDisabled2] = useState(false);
+  const [disabled3, setDisabled3] = useState(false);
+  
 
   function togglePopupVisibility() {
     setPopupVisible(!popupVisible);
+  }
+
+  function MudaDisable(Btn){
+    if(Btn == 1){
+      setDisabled1(false)
+      setDisabled2(true)
+      setDisabled3(true)
+    }else if(Btn == 2){
+      setDisabled1(true)
+      setDisabled2(false)
+      setDisabled3(true)
+    }else{
+      setDisabled1(true)
+      setDisabled2(true)
+      setDisabled3(false)
+    }
   }
 
   function changeFontSizeAumenta() {
@@ -121,16 +141,16 @@ function HomePage() {
 
           <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
-            <input type="radio" name="opcao" />
-           <input type="range" id="deute"   min="0" max="100"  onChange={changeDeuteColor} />
+            <input type="radio" name="opcao" onClick={() => MudaDisable(1)}/>
+           <input type="range" disabled={disabled1} id="deute"   min="0" max="100"  onChange={changeDeuteColor}  />
            <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
-            <input type="radio" name="opcao" />
-            <input type="range" id="prota"  min="0" max="100"  onChange={changeProtaColor} />
+            <input type="radio" name="opcao" onClick={() => MudaDisable(2)}/>
+            <input type="range" disabled={disabled2} id="prota"  min="0" max="100"  onChange={changeProtaColor} />
             <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Tetranotopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="trito"  min="0" max="100" step="1"  onChange={changeTritoColor} />
+          <input type="radio" name="opcao" onClick={() => MudaDisable(3)}/>
+          <input type="range" disabled={disabled3} id="trito"  min="0" max="100" step="1"  onChange={changeTritoColor} />
           </div>
       </div>
 
