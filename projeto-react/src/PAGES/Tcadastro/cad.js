@@ -209,7 +209,7 @@ function SignupPage() {
             onChange={(e) => setLoginSenha(e.target.value)}
             className={styles.input}
           />
-          <a href='#'>Esqueceu sua senha?</a>
+          <a href='PasswordReset'>Esqueceu sua senha?</a>
           <button type='submit' className={styles.button}>Login</button>
         </form>
       </div>

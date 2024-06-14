@@ -13,8 +13,8 @@ function RoutesApp() {
       <Route path="/" element={<SignupPage />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />
       <Route path="/PasswordReset" element={<EsqSenha />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="/rgb" element={<ColorPicker />} />
+      <Route path="/quiz" element={<PrivateRoute element={Quiz} />} />
+      <Route path="/rgb" element={<PrivateRoute element={ColorPicker} />} />
     </Routes>
   );
 }
