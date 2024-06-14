@@ -118,10 +118,10 @@ img{
 
 .texto{
   position: fixed;
-  top: 0;
+  margin-left: 750px;
 }
 .logout{
   position: fixed;
   left: 0;
-  top: 0;
+  top: 1;
 }

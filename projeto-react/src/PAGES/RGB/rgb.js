@@ -43,8 +43,7 @@ function ColorPicker() {
       </div>
       <div>
         <label htmlFor="slideGreen">GREEN</label>
-        <input 
-          type="range" 
+        <input type="range" 
           name="slideGreen" 
           id="slideGreen" 
           value={green} 

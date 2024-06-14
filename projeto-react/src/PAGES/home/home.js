@@ -142,11 +142,11 @@ function HomePage() {
           <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
             <input type="radio" name="opcao" onClick={() => MudaDisable(1)}/>
-           <input type="range" disabled={disabled1} id="deute"   min="0" max="100"  onChange={changeDeuteColor}  />
+           <input type="range" disabled={disabled1} id="deute"   min="0" max="100" onChange={changeDeuteColor}  />
            <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Protanopia</a>
             <input type="radio" name="opcao" onClick={() => MudaDisable(2)}/>
-            <input type="range" disabled={disabled2} id="prota"  min="0" max="100"  onChange={changeProtaColor} />
+            <input type="range" disabled={disabled2} id="prota"  min="0" max="100" onChange={changeProtaColor} />
             <br /><br />
             <a className="a" style={{ display: 'inline-block'}}>Tetranotopia</a>
           <input type="radio" name="opcao" onClick={() => MudaDisable(3)}/>
@@ -162,7 +162,7 @@ function HomePage() {
       
 
       <div className="Cores">
-        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' alt="imagem" />
+        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' background-color='rgb(0,0,0)' alt="imagem" />
       </div>
 
       
