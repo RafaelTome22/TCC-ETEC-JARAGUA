@@ -1,0 +1,127 @@
+body{
+  width: 500px;
+  height: 500px;
+}
+
+
+
+.menu{
+  float: right;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+img{
+  float: right;
+  width: 70px;
+  height: 70px;
+  position: static;
+  margin-right: -16px;
+  margin-top: -10px;
+  
+}
+
+#popup{
+  visibility: hidden;
+  width: 220px;
+  height: 500px;
+  background-color: rgb(235, 234, 234);
+  float: right;
+  right: 0;
+  top: 0;
+  position: fixed;
+  
+
+}
+
+#deute{
+  width: 200px;
+  
+}
+
+#prota{
+  width: 200px;
+}
+
+#trito {
+  width: 200px;
+  
+  
+}
+
+.italico{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bold{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.diminui{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.aumenta{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#Dauto{
+  margin-top: 50px;
+}
+
+.a {
+  font-size: 20px;
+}
+
+.Cores{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  float: left;
+}
+
+.Cores > img{
+  width: 500px;
+  height: 500px;
+  position: fixed ;
+  left: 0;
+  bottom: 0;
+
+}
+
+#liga{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  float: right;
+  margin-top: -55px;
+  cursor: pointer;
+}
+
+.texto{
+  position: fixed;
+  margin-left: 750px;
+}
+.logout{
+  position: fixed;
+  left: 0;
+  top: 1;
+}
