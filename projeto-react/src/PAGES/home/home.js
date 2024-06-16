@@ -12,9 +12,9 @@ function HomePage() {
   };
 
   const [popupVisible, setPopupVisible] = useState(true);
-  const [disabled1, setDisabled1] = useState(false);
+  /*const [disabled1, setDisabled1] = useState(false);
   const [disabled2, setDisabled2] = useState(false);
-  const [disabled3, setDisabled3] = useState(false);
+  const [disabled3, setDisabled3] = useState(false);*/
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
@@ -41,7 +41,7 @@ function HomePage() {
     setPopupVisible(!popupVisible);
   }
 
-  function MudaDisable(Btn) {
+  /*function MudaDisable(Btn) {
     if (Btn === 1) {
       setDisabled1(false);
       setDisabled2(true);
@@ -56,6 +56,7 @@ function HomePage() {
       setDisabled3(false);
     }
   }
+  */
 
   function changeFontSizeAumenta() {
     const paragraphs = document.getElementsByTagName('p');
@@ -122,16 +123,16 @@ function HomePage() {
         <button onClick={toggleItalic} className="italico">I</button>
         <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
-          <input type="radio" name="opcao" onClick={() => MudaDisable(1)} />
-          <input type="range" disabled={disabled1} id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
+          <input type="radio" name="opcao" /*onClick={() => MudaDisable(1)}*/ />
+          <input type="range" /*disabled={disabled1}*/ id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
           <br /><br />
           <a className="a" style={{ display: 'inline-block' }}>Protanopia</a>
-          <input type="radio" name="opcao" onClick={() => MudaDisable(2)} />
-          <input type="range" disabled={disabled2} id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
+          <input type="radio" name="opcao" /*onClick={() => MudaDisable(2)}*/ />
+          <input type="range" /*disabled={disabled2}*/ id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
           <br /><br />
           <a className="a" style={{ display: 'inline-block' }}>Tritanopia</a>
-          <input type="radio" name="opcao" onClick={() => MudaDisable(3)} />
-          <input type="range" disabled={disabled3} id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
+          <input type="radio" name="opcao" /*onClick={() => MudaDisable(3)}*/ />
+          <input type="range" /*disabled={disabled3}*/ id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
         </div>
       </div>
       <button className="menu" onClick={togglePopupVisibility}>Menu</button>
@@ -141,8 +142,9 @@ function HomePage() {
       <div className="Cores">
         <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${red}deg) saturate(500%) brightness(${green}%) contrast(${blue}%)` }} alt="imagem" />
       </div>
-      <button className="logout" onClick={handleLogout}>Logout</button> <br />
-      <button className="quiz" onClick={handleQuizRedirect}>Quiz</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
     </div>
   );
 }
