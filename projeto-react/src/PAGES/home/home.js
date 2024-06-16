@@ -10,12 +10,12 @@ function HomePage() {
   };
 
   const [popupVisible, setPopupVisible] = useState(true);
-  /*const [disabled1, setDisabled1] = useState(false);
-  const [disabled2, setDisabled2] = useState(false);
-  const [disabled3, setDisabled3] = useState(false);*/
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
+  const [vermelho, setVermelho] = useState(0);
+  const [verde, setVerde] = useState(0);
+  const [azul, setAzul] = useState(0);
 
   const handleChange = (color, value) => {
     switch (color) {
@@ -33,28 +33,29 @@ function HomePage() {
     }
   };
 
-  const colorFilter = `rgb(${red}, ${green}, ${blue})`;
+  const TrocaFonte = (color, value) => {
+    switch (color) {
+      case 'vermelho':
+        setVermelho(value);
+        break;
+      case 'verde':
+        setVerde(value);
+        break;
+      case 'azul':
+        setAzul(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const textColor = `rgb(${vermelho}, ${verde}, ${azul})`;
+
+  const Color = `rgb(${red}, ${green}, ${blue})`;
 
   function togglePopupVisibility() {
     setPopupVisible(!popupVisible);
   }
-
-  /*function MudaDisable(Btn) {
-    if (Btn === 1) {
-      setDisabled1(false);
-      setDisabled2(true);
-      setDisabled3(true);
-    } else if (Btn === 2) {
-      setDisabled1(true);
-      setDisabled2(false);
-      setDisabled3(true);
-    } else {
-      setDisabled1(true);
-      setDisabled2(true);
-      setDisabled3(false);
-    }
-  }
-  */
 
   function changeFontSizeAumenta() {
     const paragraphs = document.getElementsByTagName('p');
@@ -117,20 +118,35 @@ function HomePage() {
         <button onClick={toggleItalic} className="italico">I</button>
         <div id="Dauto">
           <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
-          <input type="radio" name="opcao" /*onClick={() => MudaDisable(1)}*/ />
-          <input type="range" /*disabled={disabled1}*/ id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
+          <input type="radio" name="opcao" />
+          <input type="range" id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
           <br /><br />
           <a className="a" style={{ display: 'inline-block' }}>Protanopia</a>
-          <input type="radio" name="opcao" /*onClick={() => MudaDisable(2)}*/ />
-          <input type="range" /*disabled={disabled2}*/ id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
+          <input type="radio" name="opcao" />
+          <input type="range" id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
           <br /><br />
           <a className="a" style={{ display: 'inline-block' }}>Tritanopia</a>
-          <input type="radio" name="opcao" /*onClick={() => MudaDisable(3)}*/ />
-          <input type="range" /*disabled={disabled3}*/ id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
+          <input type="radio" name="opcao" />
+          <input type="range" id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
+          <br/><br/>
+          <a className="a" style={{ display: 'inline-block' }}>Cor fonte</a>
+          <input type="radio" name="opcao" />
+          <br/>
+          <a className="a" style={{ display: 'inline-block' }}>red</a>
+          <br/>
+          <input type="range" name="red" min="0" max="255" value={vermelho} onChange={(e) => TrocaFonte('vermelho', e.target.value)} />
+          <br/>
+          <a className="a" style={{ display: 'inline-block' }}>green</a>
+          <br/>
+          <input type="range" name="green" min="0" max="255" value={verde} onChange={(e) => TrocaFonte('verde', e.target.value)} />
+          <br/>
+          <a className="a" style={{ display: 'inline-block' }}>blue</a>
+          <br/>
+          <input type="range" name="blue" min="0" max="255" value={azul} onChange={(e) => TrocaFonte('azul', e.target.value)} />
         </div>
       </div>
       <button className="menu" onClick={togglePopupVisibility}>Menu</button>
-      <div className="texto">
+      <div className="texto" style={{ color: textColor }}>
         <p>Muda Fonte</p>
       </div>
 
