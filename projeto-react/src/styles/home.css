@@ -3,8 +3,6 @@ body{
   height: 500px;
 }
 
-
-
 .menu{
   float: right;
   width: 50px;
@@ -122,9 +120,12 @@ img{
   position: fixed;
   margin-left: 750px;
 }
+<<<<<<< HEAD
 .logout{
   position: fixed;
   left: 0;
   top: 1;
 }
+=======
+>>>>>>> 1496219597b2d78e70e896441a825ac736987f3d
 
