@@ -1,0 +1,14 @@
+inicializar o projeto na maquina
+###
+cd projeto react
+npm install
+npm install firebase
+npm start 
+###
+
+subir para o github
+###
+git add *
+git commit -m "mensagem"
+git push origin API
+###
