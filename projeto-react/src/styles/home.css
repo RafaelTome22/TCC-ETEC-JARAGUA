@@ -118,14 +118,4 @@ img{
   position: fixed;
   margin-left: 750px;
 }
-.logout{
-  position: fixed;
-  left: 0;
-  top: 1;
-}
 
-.quiz {
-  width: 100px;
-  left: 0;
-  top: 1;
-}
