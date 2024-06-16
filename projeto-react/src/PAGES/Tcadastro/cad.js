@@ -140,15 +140,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'github']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+              Continue com sua conta Google
             </a>
           </div>
           <span>Use seu Email e Senha</span>
@@ -183,15 +175,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'github']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+              Continue com a sua conta Google
             </a>
           </div>
           <span>Ou use seu Email e Senha</span>
@@ -209,7 +193,7 @@ function SignupPage() {
             onChange={(e) => setLoginSenha(e.target.value)}
             className={styles.input}
           />
-          <a href='PasswordReset'>Esqueceu sua senha?</a>
+          <a href='PasswordReset' className={styles.aPass}>Esqueceu sua senha?</a>
           <button type='submit' className={styles.button}>Login</button>
         </form>
       </div>
