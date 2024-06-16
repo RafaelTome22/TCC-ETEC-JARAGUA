@@ -136,6 +136,8 @@ function HomePage() {
         <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ backgroundColor: color }} alt="imagem" />
       </div>
       <button className="logout" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
     </div>
   );
 }
