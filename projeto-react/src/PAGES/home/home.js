@@ -33,7 +33,7 @@ function HomePage() {
     }
   };
 
-  const color = `rgb(${red}, ${green}, ${blue})`;
+  const colorFilter = `rgb(${red}, ${green}, ${blue})`;
 
   function togglePopupVisibility() {
     setPopupVisible(!popupVisible);
@@ -123,7 +123,7 @@ function HomePage() {
           <input type="radio" name="opcao" onClick={() => MudaDisable(2)} />
           <input type="range" disabled={disabled2} id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
           <br /><br />
-          <a className="a" style={{ display: 'inline-block' }}>Tetranotopia</a>
+          <a className="a" style={{ display: 'inline-block' }}>Tritanopia</a>
           <input type="radio" name="opcao" onClick={() => MudaDisable(3)} />
           <input type="range" disabled={disabled3} id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
         </div>
@@ -132,11 +132,11 @@ function HomePage() {
       <div className="texto">
         <p>Muda Fonte</p>
       </div>
+
       <div className="Cores">
-        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ backgroundColor: color }} alt="imagem" />
+        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${red}deg) saturate(500%) brightness(${green}%) contrast(${blue}%)` }} alt="imagem" />
       </div>
-      <button className="logout" onClick={handleLogout}>Logout</button>
-      <button className="logout" onClick={handleLogout}>Logout</button>
+      
       <button className="logout" onClick={handleLogout}>Logout</button>
     </div>
   );
