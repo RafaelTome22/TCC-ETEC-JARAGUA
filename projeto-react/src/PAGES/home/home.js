@@ -1,9 +1,11 @@
 import { useAuth } from '../../AuthContext';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import '../../styles/home.css';
 
 function HomePage() {
   const { logout } = useAuth();
+  const navigate = useNavigate(); 
 
   const handleLogout = () => {
     logout();
@@ -105,6 +107,10 @@ function HomePage() {
     }
   }
 
+  const handleQuizRedirect = () => {
+    navigate('/quiz'); // Redirect to quiz page
+  };
+
   return (
     <div>
       <div id="popup" style={{ visibility: popupVisible ? 'visible' : 'hidden' }}>
@@ -132,12 +138,11 @@ function HomePage() {
       <div className="texto">
         <p>Muda Fonte</p>
       </div>
-
       <div className="Cores">
         <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${red}deg) saturate(500%) brightness(${green}%) contrast(${blue}%)` }} alt="imagem" />
       </div>
-      
-      <button className="logout" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button> <br />
+      <button className="quiz" onClick={handleQuizRedirect}>Quiz</button>
     </div>
   );
 }

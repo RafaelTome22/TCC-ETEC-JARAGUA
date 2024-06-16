@@ -3,8 +3,6 @@ body{
   height: 500px;
 }
 
-
-
 .menu{
   float: right;
   width: 50px;
@@ -122,6 +120,12 @@ img{
 }
 .logout{
   position: fixed;
+  left: 0;
+  top: 1;
+}
+
+.quiz {
+  width: 100px;
   left: 0;
   top: 1;
 }
