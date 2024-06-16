@@ -1,12 +1,12 @@
 import { useAuth } from '../../AuthContext';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import '../../styles/home.css';
 
 function HomePage() {
   const { logout } = useAuth();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
@@ -17,23 +17,30 @@ function HomePage() {
   };
 
   const [popupVisible, setPopupVisible] = useState(true);
-  const [red, setRed] = useState(0);
-  const [green, setGreen] = useState(0);
-  const [blue, setBlue] = useState(0);
+  const [deuto, setDeuto] = useState(0); // Red filter
+  const [prota, setProta] = useState(100); // Green filter
+  const [trito, setTrito] = useState(100); // Blue filter
   const [vermelho, setVermelho] = useState(0);
   const [verde, setVerde] = useState(0);
   const [azul, setAzul] = useState(0);
+  const [bgRed, setBgRed] = useState(255);
+  const [bgGreen, setBgGreen] = useState(255);
+  const [bgBlue, setBgBlue] = useState(255);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = `rgb(${bgRed}, ${bgGreen}, ${bgBlue})`;
+  }, [bgRed, bgGreen, bgBlue]);
 
   const handleChange = (color, value) => {
     switch (color) {
-      case 'red':
-        setRed(value);
+      case 'deuto':
+        setDeuto(value);
         break;
-      case 'green':
-        setGreen(value);
+      case 'prota':
+        setProta(value);
         break;
-      case 'blue':
-        setBlue(value);
+      case 'trito':
+        setTrito(value);
         break;
       default:
         break;
@@ -56,8 +63,23 @@ function HomePage() {
     }
   };
 
+  const changeBackgroundColor = (color, value) => {
+    switch (color) {
+      case 'bgRed':
+        setBgRed(value);
+        break;
+      case 'bgGreen':
+        setBgGreen(value);
+        break;
+      case 'bgBlue':
+        setBgBlue(value);
+        break;
+      default:
+        break;
+    }
+  };
+
   const textColor = `rgb(${vermelho}, ${verde}, ${azul})`;
-  const Color = `rgb(${red}, ${green}, ${blue})`;
 
   function togglePopupVisibility() {
     setPopupVisible(!popupVisible);
@@ -127,11 +149,11 @@ function HomePage() {
           <h4>Cores da Imagem</h4>
           <div id="Dauto">
             <label>Deuteranopia</label>
-            <input type="range" id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
+            <input type="range" id="deute" min="0" max="255" value={deuto} onChange={(e) => handleChange('deuto', e.target.value)} />
             <label>Protanopia</label>
-            <input type="range" id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
+            <input type="range" id="prota" min="0" max="255" value={prota} onChange={(e) => handleChange('prota', e.target.value)} />
             <label>Tritanopia</label>
-            <input type="range" id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
+            <input type="range" id="trito" min="0" max="255" value={trito} onChange={(e) => handleChange('trito', e.target.value)} />
             <h4>Cor da Fonte</h4>
             <label>Red</label>
             <input type="range" name="red" min="0" max="255" value={vermelho} onChange={(e) => TrocaFonte('vermelho', e.target.value)} />
@@ -139,6 +161,13 @@ function HomePage() {
             <input type="range" name="green" min="0" max="255" value={verde} onChange={(e) => TrocaFonte('verde', e.target.value)} />
             <label>Blue</label>
             <input type="range" name="blue" min="0" max="255" value={azul} onChange={(e) => TrocaFonte('azul', e.target.value)} />
+            <h4>Cor do Background</h4>
+            <label>Red</label>
+            <input type="range" name="bgRed" min="0" max="255" value={bgRed} onChange={(e) => changeBackgroundColor('bgRed', e.target.value)} />
+            <label>Green</label>
+            <input type="range" name="bgGreen" min="0" max="255" value={bgGreen} onChange={(e) => changeBackgroundColor('bgGreen', e.target.value)} />
+            <label>Blue</label>
+            <input type="range" name="bgBlue" min="0" max="255" value={bgBlue} onChange={(e) => changeBackgroundColor('bgBlue', e.target.value)} />
           </div>
         </div>
       </Draggable>
@@ -147,7 +176,7 @@ function HomePage() {
         <p>Muda Fonte</p>
       </div>
       <div className="Cores">
-        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${red}deg) saturate(500%) brightness(${green}%) contrast(${blue}%)` }} alt="imagem" />
+        <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${deuto}deg) saturate(${prota}%) brightness(${trito}%)` }} alt="imagem" />
       </div>
       <button className="logout" onClick={handleLogout}>Logout</button>
       <button className="quiz" onClick={handleQuizRedirect}>Quiz</button>
@@ -156,7 +185,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
-
-
