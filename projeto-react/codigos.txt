@@ -1,0 +1,6 @@
+###
+cd projeto react
+npm install
+npm install firebase
+npm start 
+###
