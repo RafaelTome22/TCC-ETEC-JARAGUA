@@ -1,131 +1,145 @@
-body{
-  width: 500px;
-  height: 500px;
-}
-
-.menu{
-  float: right;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
-img{
-  float: right;
-  width: 70px;
-  height: 70px;
-  position: static;
-  margin-right: -16px;
-  margin-top: -10px;
-  
-}
-
-#popup{
-  visibility: hidden;
-  width: 220px;
-  height: 500px;
-  background-color: rgb(235, 234, 234);
-  float: right;
-  right: 0;
-  top: 0;
-  position: fixed;
-  
-
-}
-
-#deute{
-  width: 200px;
-  
-}
-
-#prota{
-  width: 200px;
-}
-
-#trito {
-  width: 200px;
-}
-
-#corFonte{
-  width: 200px;
-}
-
-.italico{
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.bold{
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.diminui{
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.aumenta{
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-#Dauto{
-  margin-top: 50px;
-}
-
-.a {
-  font-size: 20px;
-}
-
-.Cores{
-  height: 100px;
-  width: 100%;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
-  float: left;
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
-.Cores > img{
-  width: 500px;
-  height: 500px;
-  position: fixed ;
-  left: 0;
-  bottom: 0;
-
+.menu {
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 50px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-#liga{
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  float: right;
-  margin-top: -55px;
+.menu:hover {
+  background-color: #2980b9;
+}
+
+#popup {
+  visibility: hidden;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+h4 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+  color: #666;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10px 0;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #ccc;
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #3498db;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.texto{
-  position: fixed;
-  margin-left: 750px;
+input[type="range"]:focus {
+  outline: none;
 }
-<<<<<<< HEAD
-.logout{
-  position: fixed;
-  left: 0;
-  top: 1;
+
+.texto {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
 }
-=======
->>>>>>> 1496219597b2d78e70e896441a825ac736987f3d
+
+.Cores {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Cores img {
+  width: 150px;
+  height: auto;
+}
+
+.logout, .quiz {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout:hover, .quiz:hover {
+  background-color: #c0392b;
+}
 

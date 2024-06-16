@@ -1,6 +1,7 @@
 import { useAuth } from '../../AuthContext';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
+import Draggable from 'react-draggable';
 import '../../styles/home.css';
 
 function HomePage() {
@@ -14,7 +15,6 @@ function HomePage() {
   const handleQuizRedirect = () => {
     navigate('/quiz'); // Redirect to quiz page
   };
-
 
   const [popupVisible, setPopupVisible] = useState(true);
   const [red, setRed] = useState(0);
@@ -57,7 +57,6 @@ function HomePage() {
   };
 
   const textColor = `rgb(${vermelho}, ${verde}, ${azul})`;
-
   const Color = `rgb(${red}, ${green}, ${blue})`;
 
   function togglePopupVisibility() {
@@ -116,42 +115,33 @@ function HomePage() {
 
   return (
     <div>
-      <div id="popup" style={{ visibility: popupVisible ? 'visible' : 'hidden' }}>
-        <h3>Menu</h3>
-        <h4>Fonte</h4>
-        <button onClick={changeFontSizeAumenta} className="aumenta">A+</button>
-        <button onClick={changeFontSizeDiminui} className="diminui">A-</button>
-        <button onClick={toggleBold} className="bold">N</button>
-        <button onClick={toggleItalic} className="italico">I</button>
-        <div id="Dauto">
-          <a className="a" style={{ display: 'inline-block' }}>Deuteranopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
-          <br /><br />
-          <a className="a" style={{ display: 'inline-block' }}>Protanopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
-          <br /><br />
-          <a className="a" style={{ display: 'inline-block' }}>Tritanopia</a>
-          <input type="radio" name="opcao" />
-          <input type="range" id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
-          <br/><br/>
-          <a className="a" style={{ display: 'inline-block' }}>Cor fonte</a>
-          <input type="radio" name="opcao" />
-          <br/>
-          <a className="a" style={{ display: 'inline-block' }}>red</a>
-          <br/>
-          <input type="range" name="red" min="0" max="255" value={vermelho} onChange={(e) => TrocaFonte('vermelho', e.target.value)} />
-          <br/>
-          <a className="a" style={{ display: 'inline-block' }}>green</a>
-          <br/>
-          <input type="range" name="green" min="0" max="255" value={verde} onChange={(e) => TrocaFonte('verde', e.target.value)} />
-          <br/>
-          <a className="a" style={{ display: 'inline-block' }}>blue</a>
-          <br/>
-          <input type="range" name="blue" min="0" max="255" value={azul} onChange={(e) => TrocaFonte('azul', e.target.value)} />
+      <Draggable cancel="input,button">
+        <div id="popup" style={{ visibility: popupVisible ? 'visible' : 'hidden' }}>
+          <button className="close" onClick={togglePopupVisibility}>X</button>
+          <h3>Menu</h3>
+          <h4>Fonte</h4>
+          <button onClick={changeFontSizeAumenta} className="aumenta">A+</button>
+          <button onClick={changeFontSizeDiminui} className="diminui">A-</button>
+          <button onClick={toggleBold} className="bold">N</button>
+          <button onClick={toggleItalic} className="italico">I</button>
+          <h4>Cores da Imagem</h4>
+          <div id="Dauto">
+            <label>Deuteranopia</label>
+            <input type="range" id="deute" min="0" max="255" value={red} onChange={(e) => handleChange('red', e.target.value)} />
+            <label>Protanopia</label>
+            <input type="range" id="prota" min="0" max="255" value={green} onChange={(e) => handleChange('green', e.target.value)} />
+            <label>Tritanopia</label>
+            <input type="range" id="trito" min="0" max="255" value={blue} onChange={(e) => handleChange('blue', e.target.value)} />
+            <h4>Cor da Fonte</h4>
+            <label>Red</label>
+            <input type="range" name="red" min="0" max="255" value={vermelho} onChange={(e) => TrocaFonte('vermelho', e.target.value)} />
+            <label>Green</label>
+            <input type="range" name="green" min="0" max="255" value={verde} onChange={(e) => TrocaFonte('verde', e.target.value)} />
+            <label>Blue</label>
+            <input type="range" name="blue" min="0" max="255" value={azul} onChange={(e) => TrocaFonte('azul', e.target.value)} />
+          </div>
         </div>
-      </div>
+      </Draggable>
       <button className="menu" onClick={togglePopupVisibility}>Menu</button>
       <div className="texto" style={{ color: textColor }}>
         <p>Muda Fonte</p>
@@ -166,3 +156,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+
+
