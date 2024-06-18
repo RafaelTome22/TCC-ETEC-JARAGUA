@@ -148,11 +148,11 @@ function HomePage() {
           <button onClick={toggleItalic} className="italico">I</button>
           <h4>Cores da Imagem</h4>
           <div id="Dauto">
-            <label>Deuteranopia</label>
+            <label>Cor</label>
             <input type="range" id="deute" min="0" max="255" value={deuto} onChange={(e) => handleChange('deuto', e.target.value)} />
-            <label>Protanopia</label>
+            <label>Saturação</label>
             <input type="range" id="prota" min="0" max="255" value={prota} onChange={(e) => handleChange('prota', e.target.value)} />
-            <label>Tritanopia</label>
+            <label>Brilho</label>
             <input type="range" id="trito" min="0" max="255" value={trito} onChange={(e) => handleChange('trito', e.target.value)} />
             <h4>Cor da Fonte</h4>
             <label>Red</label>
@@ -173,7 +173,7 @@ function HomePage() {
       </Draggable>
       <button className="menu" onClick={togglePopupVisibility}>Menu</button>
       <div className="texto" style={{ color: textColor }}>
-        <p>Muda Fonte</p>
+        <p>Exemplo de mudança de fonte</p>
       </div>
       <div className="Cores">
         <img id="image" src='https://www.pngall.com/wp-content/uploads/11/Red-Apple-PNG.png' style={{ filter: `hue-rotate(${deuto}deg) saturate(${prota}%) brightness(${trito}%)` }} alt="imagem" />

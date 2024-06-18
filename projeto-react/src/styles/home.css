@@ -137,6 +137,7 @@ input[type="range"]:focus {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  
 }
 
 .logout:hover, .quiz:hover {
