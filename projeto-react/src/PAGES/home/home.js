@@ -13,13 +13,13 @@ function HomePage() {
   };
 
   const handleQuizRedirect = () => {
-    navigate('/quiz'); // Redirect to quiz page
+    navigate('/quiz'); 
   };
 
   const [popupVisible, setPopupVisible] = useState(true);
-  const [deuto, setDeuto] = useState(0); // Red filter
-  const [prota, setProta] = useState(100); // Green filter
-  const [trito, setTrito] = useState(100); // Blue filter
+  const [deuto, setDeuto] = useState(0);
+  const [prota, setProta] = useState(100); 
+  const [trito, setTrito] = useState(100); 
   const [vermelho, setVermelho] = useState(0);
   const [verde, setVerde] = useState(0);
   const [azul, setAzul] = useState(0);
