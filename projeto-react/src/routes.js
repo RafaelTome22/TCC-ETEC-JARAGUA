@@ -9,11 +9,12 @@ import EsqSenha from './PAGES/PasswordReset/EsqSenha.js'
 import Quiz from './PAGES/quizPage/quiz.js'
 import ColorPicker from './PAGES/RGB/rgb.js'
 import PrivateRoute from './PrivateRoute';
+import Vitrine from './PAGES/vitrine.js';
 
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<SignupPage />} />
+      <Route path="/" element={<Vitrine />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />
       <Route path="/Visao" element={<Visao /> }  />
       <Route path="/Motora" element={<PrivateRoute element={Motora} />} />
