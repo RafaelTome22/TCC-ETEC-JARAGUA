@@ -10,11 +10,12 @@ import Quiz from './PAGES/quizPage/quiz.js'
 import ColorPicker from './PAGES/RGB/rgb.js'
 import PrivateRoute from './PrivateRoute';
 import Vitrine from './PAGES/vitrine.js';
+import Biblioteca from './PAGES/biblioteca.js';
 
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Vitrine />} />
+      <Route path="/" element={<Vitrine/>} />
       <Route path="/login" element={<SignupPage />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />
       <Route path="/Visao" element={<Visao /> }  />

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import '../../styles/home.css';
 
+
+
 function HomePage() {
   const { logout } = useAuth();
   const navigate = useNavigate();
