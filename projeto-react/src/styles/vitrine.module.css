@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap&family=Kreon:wght@300..700&display=swap');
+
+/* Aplica box-sizing: border-box para todos os elementos */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita barras de rolagem horizontais */
+}
+
+.all {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #FFF;
+}
+
+.header-main {
+    width: 100%;
+    height: 80px; /* Defina uma altura fixa para o header */
+    display: flex;
+    justify-content: space-between;
+    position: fixed; /* Fixa o header no topo da tela */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white; /* Garante que o header tenha um fundo */
+}
+
+.header-info {
+    display: flex;
+    width: 29%;
+    justify-content: flex-start;
+    align-items: center;
+}
+ 
+.logo {
+    margin-left: 3%;
+    width: 50px;
+    height: 50px;
+}
+
+.nome-empresa {
+    margin-left: 3%;
+    font-size: 22px;
+    font-family: "Secular One", sans-serif;
+    color: #735ff0;
+}
+
+.header-pesquisa {
+    display: flex;
+    align-items: center;
+    border: 3px solid #989898;
+    background-color: #00000006;
+    width: 39%;
+    margin: 20px auto;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
+#searchInput {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    font-family: "Secular One", sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.icon-pesquisa {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.header-btn {
+    width: 29%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-form-log {
+    margin-right: 2%;
+    background: #00189B;
+    opacity: 73%;
+    font-family: "Roboto", sans-serif;
+    border-radius: 20px;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.article-body {
+    width: 100vw; /* Garante que ocupe toda a largura disponível */
+    height: 100vh;
+    min-height: calc(100vh - 80px); /* Ajusta a altura para compensar o header */
+    background: rgb(72,93,204);
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
+    margin-top: 80px; /* Garante que o conteúdo fique abaixo do header */
+    padding: 20px;
+    display: flex;
+}
+
+.article-main {
+    width: 100vw;
+    height: 650px;
+    margin-top: 150px;
+    padding: 2%;
+    display: flex;
+    border: 3px solid red;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.exemp-cod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 90%;
+    background-color: #dedada;
+    opacity: 85%;
+    border-radius: 16px;
+}
+
+.text-exemp-cod {
+    padding: 2%;
+    border-left: #495ECD 10px solid;
+    width: 85%;
+    height: 85%;
+    background-color: #FFF;
+}
+
+.text-exemp-cod h1 {
+    font-family: "Secular one";
+}
+
+.text-exemp {
+    width: 50%;
+    height: 40%;
+    background-color: #fff;
+    opacity: 85%;
+    border-radius: 16px;
+}
+

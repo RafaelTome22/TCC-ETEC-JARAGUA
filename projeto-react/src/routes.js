@@ -16,6 +16,7 @@ function RoutesApp() {
   return (
     <Routes>
       <Route path="/" element={<Vitrine/>} />
+      <Route path="/biblioteca" element={<Biblioteca/>} />
       <Route path="/login" element={<SignupPage />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />
       <Route path="/Visao" element={<Visao /> }  />
