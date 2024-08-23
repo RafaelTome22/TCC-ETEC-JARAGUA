@@ -36,7 +36,7 @@
 }
 
 .logo {
-    margin-left: 3%;
+    margin-left: 6%;
     width: 40px;
     height: 40px;
 }
@@ -50,23 +50,37 @@
 }
 
 .livro{
-    width: 40px;
-    height: 40px;
-}
-
-.mao{
-    width: 40px;
-    height: 40px;
+    left: 65px;
+    position: absolute;
+    width: 180px;
+    height: 180px;
 }
 
 .olho{
-    width: 40px;
-    height: 40px;
+    cursor: pointer;
+    top: 180px;
+    left: 30px;
+    position: absolute;
+    width: 140px;
+    height: 60px;
+}
+
+.mao{
+    cursor: pointer;
+    top: 270px;
+    left: 30px;
+    position: absolute;
+    width: 140px;
+    height: 70px;
 }
 
 .orelha{
-    width: 40px;
-    height: 40px;
+    cursor: pointer;
+    top: 380px;
+    left: 30px;
+    position: absolute;
+    width: 140px;
+    height: 60px;
 }
 
 .paragrafo-v{
@@ -89,9 +103,9 @@
     border: 3px solid #989898;
     background-color: #00000006;
     width: 39%;
-    height: 25px;
+    height: 35px;
     margin-top: 0.5%;
-    margin-left: -240px ;
+    margin-left: -64% ;
     border-radius: 25px;
     padding: 5px 10px;
     

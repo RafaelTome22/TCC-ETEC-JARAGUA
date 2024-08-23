@@ -5,7 +5,7 @@ import lupa from '../assets/lupa.png'
 import user from '../assets/user.png'
 import mao from '../assets/mao.png'
 import olho from '../assets/olho.png'
-import livro from '../assets/livro1.png'
+import livro from '../assets/livro.png'
 import orelha from '../assets/orelha.png'
 
 
@@ -39,11 +39,10 @@ function Biblioteca() {
           <div className= "retangulo-direito">
 
           <img className = 'livro' src={livro} alt='imagem livro'/>
-          
           <br></br>
-          <img className = 'mao' src={mao} alt='imagem mao'/>
+          <img className = 'olho' src={olho} alt='imagem mao'/>
           <br></br>
-          <img className = 'olho' src={olho} alt='imagem olho'/> <p className="paragrafo-v">Visual</p>
+          <img className = 'mao' src={mao} alt='imagem olho'/>
           <br></br>
           <img className = 'orelha' src={orelha} alt='imagem orelha'/>
           </div>
