@@ -36,8 +36,10 @@ function Biblioteca() {
           alt='imagem usuario'
           />
 
-          <div className= "retangulo-direito">
+        <div className='retangulo-central'></div>
+        <div className='biblioteca-central'>Biblioteca</div>
 
+          <div className= "retangulo-direito">
           <img className = 'livro' src={livro} alt='imagem livro'/>
           <br></br>
           <img className = 'olho' src={olho} alt='imagem mao'/>
@@ -46,6 +48,9 @@ function Biblioteca() {
           <br></br>
           <img className = 'orelha' src={orelha} alt='imagem orelha'/>
           </div>
+
+
+          
 
         </header> {/*Fim do header*/}
   
