@@ -1,31 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styles from '../styles/biblioteca.module.css';
 import logo from '../assets/logo.png';
-import lupa from '../assets/lupa.png';
-import copy from '../assets/documento.png'
 
 function Biblioteca() {
-  const codeRef = useRef(null); // Cria uma referência para o código
-
-  function copyCode() {
-    const codeElement = codeRef.current; // Acessa o elemento <pre> através da ref
-
-    // Cria um elemento de input temporário para usar como intermediário
-    const tempInput = document.createElement('textarea');
-    tempInput.value = codeElement.textContent;
-    document.body.appendChild(tempInput);
-
-    // Seleciona o conteúdo do input e copia para a área de transferência
-    tempInput.select();
-    document.execCommand('copy');
-
-    // Remove o input temporário
-    document.body.removeChild(tempInput);
-
-    // Feedback visual ou de áudio para indicar que o código foi copiado
-    alert('Código copiado para a área de transferência!');
-  }
-
   return (
     <div className={styles.all}> {/*Começo da página vitrine*/}
       <header className={styles['header-main']}> {/*Começo do header*/}
@@ -35,11 +12,6 @@ function Biblioteca() {
         </div> {/*Fim do header de info*/}
         <div className={styles['header-pesquisa']}>
           <input type="text" id="searchInput" placeholder="Pesquisar" className={styles['searchInput']} />
-          <label htmlFor="searchInput">
-            <span>
-              <img className={styles['icon-pesquisa']} src={lupa} alt="ícone de pesquisa" />
-            </span>
-          </label>
         </div>
         <div className={styles['header-btn']}> {/*Começo do header botoes de login e cadastro*/}
           <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
@@ -47,7 +19,38 @@ function Biblioteca() {
         </div> {/*Fim do header botoes de login e cadastro*/}
       </header> {/*Fim do header*/}
 
-      
+      <aside className={styles.aside}>
+        <div className={styles.sidebar}>
+          <a href="#" className={`${styles.sidebarLink} ${styles.active}`}>
+            <span className="material-icons">dashboard</span>
+            <h3>Biblioteca</h3>
+          </a>
+          <a href="#" className={styles.sidebarLink}>
+            <span className="material-icons">person_outline</span>
+            <h3>Visual</h3>
+          </a>
+          <a href="#" className={styles.sidebarLink}>
+            <span className="material-icons">receipt_long</span>
+            <h3>Motora</h3>
+          </a>
+          <a href="#" className={`${styles.sidebarLink} ${styles.active}`}>
+            <span className="material-icons">insights</span>
+            <h3>Auditiva</h3>
+          </a>
+          <a href="#" className={styles.sidebarLink}>
+            <span className="material-icons">mail_outline</span>
+            <h3>Análise</h3>
+          </a>
+          <a href="#" className={styles.sidebarLink}>
+            <span className="material-icons">settings</span>
+            <h3>Configurações</h3>
+          </a>
+          <a href="#" className={styles.sidebarLink}>
+            <span className="material-icons">logout</span>
+            <h3>Sair</h3>
+          </a>
+        </div>
+      </aside>
     </div>
   );
 }
