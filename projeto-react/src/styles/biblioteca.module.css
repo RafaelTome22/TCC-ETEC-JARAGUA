@@ -20,20 +20,23 @@
 }
 
 .all {
+    width: 100vw;
     display: flex;
     min-height: 100vh;
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
 }
 
 .header-main {
-    width: 100%;
+    width: 99vw;
     height: 80px;
     display: flex;
     justify-content: space-between;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 6px;
     z-index: 1;
-    background-color: white;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 .header-info {
@@ -98,14 +101,14 @@
 
 .aside {
     width: 250px;
-    height: 90vh;
+    height: 85vh;
     position: fixed;
-    left: 15px;
-    top: 85px;
+    left: 6px;
+    top: 100px;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
     padding: 20px 0;
-    border-radius: 16px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
 }
@@ -131,13 +134,10 @@
     transition: all 0.3s ease;
 }
 
-.sidebarLink:active {
-    color: var(--color-primary);
-    background-color: var(--color-light);
-}
-
-.sidebarLink:hover {
-    color: var(--color-primary);
+.logout {
+    position: absolute;
+    bottom: 0.1rem;
+    width: 100%;
 }
 
 

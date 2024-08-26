@@ -45,7 +45,7 @@ function Biblioteca() {
             <span className="material-icons">settings</span>
             <h3>Configurações</h3>
           </a>
-          <a href="#" className={styles.sidebarLink}>
+          <a href="#" className={`${styles.sidebarLink} ${styles.logout}`}>
             <span className="material-icons">logout</span>
             <h3>Sair</h3>
           </a>
