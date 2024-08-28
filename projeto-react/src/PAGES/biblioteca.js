@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/biblioteca.module.css';
 import logo from '../assets/logo.png';
+import user from '../assets/user.png';
 
 function Biblioteca() {
   return (
@@ -14,8 +15,7 @@ function Biblioteca() {
           <input type="text" id="searchInput" placeholder="Pesquisar" className={styles['searchInput']} />
         </div>
         <div className={styles['header-btn']}> {/*Começo do header botoes de login e cadastro*/}
-          <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
-          <button title="Login" className={styles['btn-form-log']}>Login</button>
+        <img className={styles.user} src={user} alt="imagem user" />
         </div> {/*Fim do header botoes de login e cadastro*/}
       </header> {/*Fim do header*/}
 
