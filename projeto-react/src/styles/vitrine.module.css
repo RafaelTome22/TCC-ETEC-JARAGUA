@@ -93,15 +93,31 @@ html, body {
 }
 
 .btn-form-log {
-    margin-right: 2%;
-    background: #00189B;
-    opacity: 73%;
+    background-color: transparent;
     font-family: "Roboto", sans-serif;
-    border-radius: 20px;
-    color: white;
-    padding: 8px 16px;
+    color: #333;
     border: none;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.btn-form-log::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.btn-form-log:hover::after {
+    width: 0;
+    right: 100%;
 }
 
 .article-body {
