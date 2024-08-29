@@ -15,7 +15,7 @@ import Biblioteca from './PAGES/biblioteca.js';
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Vitrine/>} />
+      <Route path="/" element={<Biblioteca/>} />
       <Route path="/biblioteca" element={<Biblioteca/>} />
       <Route path="/login" element={<SignupPage />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />

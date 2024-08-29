@@ -13,6 +13,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Evita barras de rolagem horizontais */
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
 }
 
 .all {
