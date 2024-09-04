@@ -146,6 +146,16 @@
     transition: all 0.3s ease;
 }
 
+h3 {
+    color: black; 
+    transition: color 0.2s ease;
+    cursor: pointer; 
+}
+
+h3:hover {
+    color: #735ff0; 
+}
+
 .logout {
     position: absolute;
     bottom: 0.1rem;
