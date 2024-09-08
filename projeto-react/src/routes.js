@@ -11,18 +11,19 @@ import ColorPicker from './PAGES/RGB/rgb.js'
 import PrivateRoute from './PrivateRoute';
 import Vitrine from './PAGES/vitrine.js';
 import Biblioteca from './PAGES/biblioteca.js';
+import RecuperaSenha from './PAGES/RecuperaSenha.js';
 
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Biblioteca/>} />
+      <Route path="/" element={<RecuperaSenha/>} />
       <Route path="/biblioteca" element={<Biblioteca/>} />
       <Route path="/login" element={<SignupPage />} />
       <Route path="/home" element={<PrivateRoute element={HomePage} />} />
       <Route path="/Visao" element={<Visao /> }  />
       <Route path="/Motora" element={<PrivateRoute element={Motora} />} />
       <Route path="/Auditiva" element={<PrivateRoute element={Auditiva} />} />
-      <Route path="/PasswordReset" element={<EsqSenha />} />
+      <Route path="/PasswordReset" element={<EsqSenha/>} />
       <Route path="/quiz" element={<PrivateRoute element={Quiz} />} />
       <Route path="/rgb" element={<PrivateRoute element={ColorPicker} />} />
     </Routes>
