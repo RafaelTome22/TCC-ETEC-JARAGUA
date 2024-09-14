@@ -2,14 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, googleProvider } from '../../BD/firebase';
 import bcrypt from 'bcryptjs';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; // Adicione useLocation
 import { insercao } from '../../services/funcaoBD';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../../context/authContext';
 import styles from '../../styles/cad.module.css';
-import { UserContext } from '../../context/authContext';
 
 library.add(fab);
 
@@ -18,8 +15,6 @@ async function hashPassword(password) {
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   return hashedPassword;
 }
-
-
 
 function validatePassword(password) {
   const hasUpperCase = /[A-Z]/.test(password);
@@ -37,10 +32,9 @@ function SignupPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const { login, loginWithGoogle, currentUser } = useAuth();
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
-
-  const { login } = useContext(UserContext)
+  const location = useLocation(); // Use o hook useLocation aqui
 
   useEffect(() => {
     document.body.style.backgroundColor = '#c9d6ff';
@@ -95,12 +89,11 @@ function SignupPage() {
     }
     try {
       const hashedPassword = await hashPassword(senha);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
       await insercao([nome, email, hashedPassword]);
       setNome('');
       setEmail('');
       setPassword('');
-      navigate("/home");
+      navigate("/login");
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
       alert("Erro ao cadastrar. Tente novamente.");
@@ -109,118 +102,107 @@ function SignupPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!loginEmail || !loginSenha) {
-      alert("Por favor, preencha todos os campos.");
-      return;
-    }
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-      const user = userCredential.user;
-      login(user)
+      await login(loginEmail, loginSenha);
+
+      // Verifica se o usuário veio de uma página específica
+      const from = location.state?.from || '/'; // Use location.state
+      navigate(from, { replace: true }); // Redireciona para a página anterior ou para '/'
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
+      console.error('Erro no login:', error);
+      alert('Erro ao fazer login. Verifique suas credenciais.');
     }
   };
 
   const handleGoogleLogin = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/home");
-    } catch (error) {
-      console.error("Erro ao fazer login com Google:", error);
-      alert("Erro ao fazer login com Google. Tente novamente.");
-    }
+    await loginWithGoogle();
   };
-
-  if (currentUser) {
-    navigate("/home");
-    return null;
-  }
 
   return (
     <div className={`${styles.container} ${isActive ? styles.active : ''}`} id='container'>
-      <div className={`${styles.formContainer} ${styles.signUp}`}>
-        <form onSubmit={handleSignup}>
-          <h1>Cadastre-se já!</h1>
-          <div className={styles.socialIcons}>
-            <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
-              <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-              Continue com sua conta Google
-            </a>
-          </div>
-          <span>Use seu Email e Senha</span>
-          <input
-            type='text'
-            value={nome}
-            placeholder='Nome'
-            onChange={(e) => setNome(e.target.value)}
-            className={styles.input}
-          />
-          <input
-            type='email'
-            value={email}
-            placeholder='Email'
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles.input}
-          />
-          <input
-            type='password'
-            value={senha}
-            placeholder='Senha'
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-          />
-          <button type='submit' className={styles.button}>Cadastrar</button>
-        </form>
-      </div>
+    <div className={`${styles.formContainer} ${styles.signUp}`}>
+      <form onSubmit={handleSignup}>
+        <h1>Cadastre-se já!</h1>
+        <div className={styles.socialIcons}>
+          <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
+            <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+            Continue com sua conta Google
+          </a>
+        </div>
+        <span>Use seu Email e Senha</span>
+        <input
+          type='text'
+          value={nome}
+          placeholder='Nome'
+          onChange={(e) => setNome(e.target.value)}
+          className={styles.input}
+        />
+        <input
+          type='email'
+          value={email}
+          placeholder='Email'
+          onChange={(e) => setEmail(e.target.value)}
+          className={styles.input}
+        />
+        <input
+          type='password'
+          value={senha}
+          placeholder='Senha'
+          onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
+        />
+        <button type='submit' className={styles.button}>Cadastrar</button>
+      </form>
+    </div>
 
-      <div className={`${styles.formContainer} ${styles.signIn}`}>
-        <form onSubmit={handleLogin}>
-          <h1>Entre com</h1>
-          <div className={styles.socialIcons}>
-            <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
-              <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-              Continue com a sua conta Google
-            </a>
-          </div>
-          <span>Ou use seu Email e Senha</span>
-          <input
-            type='email'
-            value={loginEmail}
-            placeholder='Email'
-            onChange={(e) => setLoginEmail(e.target.value)}
-            className={styles.input}
-          />
-          <input
-            type='password'
-            value={loginSenha}
-            placeholder='Senha'
-            onChange={(e) => setLoginSenha(e.target.value)}
-            className={styles.input}
-          />
-          <a href='PasswordReset' className={styles.aPass}>Esqueceu sua senha?</a>
-          <button type='submit' className={styles.button}>Login</button>
-        </form>
-      </div>
+    <div className={`${styles.formContainer} ${styles.signIn}`}>
+      <form onSubmit={handleLogin}>
+        <h1>Entre com</h1>
+        <div className={styles.socialIcons}>
+          <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
+            <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+            Continue com a sua conta Google
+          </a>
+        </div>
+        <span>Ou use seu Email e Senha</span>
+        <input
+          type='email'
+          value={loginEmail}
+          placeholder='Email'
+          onChange={(e) => setLoginEmail(e.target.value)}
+          className={styles.input}
+        />
+        <input
+          type='password'
+          value={loginSenha}
+          placeholder='Senha'
+          onChange={(e) => setLoginSenha(e.target.value)}
+          className={styles.input}
+        />
+        <a href='PasswordReset' className={styles.aPass}>Esqueceu sua senha?</a>
+        <button type='submit' className={styles.button}>Login</button>
+      </form>
+    </div>
 
-      <div className={styles.toggleContainer}>
-        <div className={styles.toggle}>
-          <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
-            <h1>Bem-vindo!</h1>
-            <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
-            <button id='login' onClick={() => setIsActive(false)} className={styles.button}>Login</button>
-          </div>
-          <div className={`${styles.togglePanel} ${styles.toggleRight}`}>
-            <h1>Olá, visitante!</h1>
-            <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
-            <button id='register' onClick={() => setIsActive(true)} className={styles.button}>Cadastre-se</button>
-          </div>
+    <div className={styles.toggleContainer}>
+      <div className={styles.toggle}>
+        <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
+          <h1>Bem-vindo!</h1>
+          <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
+          <button id='login' onClick={() => setIsActive(false)} className={styles.button}>Login</button>
+        </div>
+        <div className={`${styles.togglePanel} ${styles.toggleRight}`}>
+          <h1>Olá, visitante!</h1>
+          <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
+          <button id='register' onClick={() => setIsActive(true)} className={styles.button}>Cadastre-se</button>
         </div>
       </div>
     </div>
+  </div>
   );
 }
 
 export default SignupPage;
+
+
 

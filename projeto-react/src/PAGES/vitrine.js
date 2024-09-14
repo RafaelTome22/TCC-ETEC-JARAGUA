@@ -1,18 +1,28 @@
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
 import styles from '../styles/vitrine.module.css';
 import logo from '../assets/logo.png';
 import lupa from '../assets/lupa.png';
 import copy from '../assets/documento.png';
+import userIcon from '../assets/user.png'; // Um ícone de usuário para quando o user estiver logado
 
 function Vitrine() {
   const navigate = useNavigate();
-  const delay = 500; // Delay de 500 milissegundos (0.5 segundos)
+  const location = useLocation();
+  const { currentUser, logout } = useAuth(); // Obtém o usuário atual e a função de logout
 
   const handleLogin = () => {
-    setTimeout(() => {
-      navigate('/login');
-    }, delay);
+    navigate('/login', { state: { from: location.pathname } });
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login'); // Redireciona para a página de login após logout
+    } catch (error) {
+      console.error('Erro ao sair:', error);
+    }
   };
 
   const codeRef = useRef(null); // Cria uma referência para o código
@@ -52,8 +62,19 @@ function Vitrine() {
           </label>
         </div>
         <div className={styles['header-btn']}> {/* Começo do header botões de login e cadastro */}
-          <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
-          <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+          {/* Se o usuário estiver logado, exibe o email e o botão de logout */}
+          {currentUser ? (
+            <div className={styles['user-info']}>
+              <img className={styles['user-icon']} src={userIcon} alt="Ícone de usuário" />
+              <span>Olá, {currentUser.email}</span>
+              <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+            </div>
+          ) : (
+            <>
+              <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
+              <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+            </>
+          )}
         </div> {/* Fim do header botões de login e cadastro */}
       </header> {/* Fim do header */}
 
@@ -67,9 +88,7 @@ function Vitrine() {
                   {`npm install focos`}
                 </pre>
                 <button className={styles["btn-copy"]} onClick={copyCode}>
-                  <img
-                    className={styles['icon-copy']} src={copy} alt="ícone de cópia"
-                  />
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
                 </button>
               </div>
             </div>
@@ -82,6 +101,7 @@ function Vitrine() {
         </div>
         <div className="article-secundario">
           {/* Conteúdo adicional pode ser adicionado aqui */}
+          <button className={'teste'} onClick={() => navigate('/biblioteca')}>opa</button>
         </div>
       </article>
     </div>
@@ -89,4 +109,5 @@ function Vitrine() {
 }
 
 export default Vitrine;
+
 

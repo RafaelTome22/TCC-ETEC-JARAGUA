@@ -3,11 +3,21 @@ import styles from '../styles/biblioteca.module.css';
 import logo from '../assets/logo.png';
 import user from '../assets/user.png';
 import copy from '../assets/documento.png';
+import { useNavigate } from 'react-router-dom';
 
 function Biblioteca() {
   // Cria uma referência distinta para cada caixa de código
   const codeRef1 = useRef(null);
   const codeRef2 = useRef(null);
+
+  const navigate = useNavigate();
+  const delay = 500; // Delay de 500 milissegundos (0.5 segundos)
+
+  const handleLogin = () => {
+    setTimeout(() => {
+      navigate('/login');
+    }, delay);
+  };
 
   // Função de cópia que aceita uma referência como parâmetro
   function copyCode(ref) {
@@ -73,6 +83,7 @@ function Biblioteca() {
           <a href="#" className={`${styles.sidebarLink} ${styles.logout}`}>
             <span className="material-icons">logout</span>
             <h3>Sair</h3>
+            <button onClick={handleLogin}>opa</button>
           </a>
         </div>
       </aside>
