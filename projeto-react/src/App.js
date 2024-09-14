@@ -1,5 +1,6 @@
 import React from 'react';
 import RoutesApp from './routes';
+import { UserContextProvider } from './context/authContext';
 
 //npm install react-scripts
 //npm install firebase
@@ -8,7 +9,9 @@ import RoutesApp from './routes';
 
 function App() {
   return (
-    <RoutesApp />
+    <UserContextProvider>
+      <RoutesApp />
+    </UserContextProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { insercao } from '../../services/funcaoBD';
 import { useAuth } from '../../AuthContext';
 import styles from '../../styles/cad.module.css';
+import { UserContext } from '../../context/authContext';
 
 library.add(fab);
 
@@ -17,6 +18,8 @@ async function hashPassword(password) {
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   return hashedPassword;
 }
+
+
 
 function validatePassword(password) {
   const hasUpperCase = /[A-Z]/.test(password);
@@ -36,6 +39,8 @@ function SignupPage() {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+
+  const { login } = useContext(UserContext)
 
   useEffect(() => {
     document.body.style.backgroundColor = '#c9d6ff';
@@ -109,8 +114,9 @@ function SignupPage() {
       return;
     }
     try {
-      await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-      navigate("/home");
+      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
+      const user = userCredential.user;
+      login(user)
     } catch (error) {
       console.error("Erro ao fazer login:", error);
       alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
