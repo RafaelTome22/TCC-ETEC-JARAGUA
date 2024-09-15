@@ -25,15 +25,23 @@ html, body {
 }
 
 .header-main {
-    width: 100%;
-    height: 80px; /* Defina uma altura fixa para o header */
+    width: 99vw;
+    height: 80px;
     display: flex;
     justify-content: space-between;
-    position: fixed; /* Fixa o header no topo da tela */
-    top: 0;
-    left: 0;
+    position: fixed;
+    top: 10px;
+    left: 6px;
     z-index: 1;
-    background-color: white; /* Garante que o header tenha um fundo */
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.user-icon{
+    cursor: pointer;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 .header-info {
@@ -101,7 +109,7 @@ html, body {
     cursor: pointer;
     overflow: hidden;
     position: relative;
-
+    margin-right: 20px;
 }
 
 .btn-form-log::after {
@@ -225,4 +233,34 @@ pre {
     font-family: "Secular One", sans-serif;
 }
 
-
+.popup {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 100;
+    width: 180px;
+  }
+  
+  .popup p {
+    margin: 0 0 10px;
+    color: #333;
+  }
+  
+  .popup button {
+    width: 100%;
+    padding: 8px;
+    background-color: #735ff0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .popup button:hover {
+    background-color: #495ECD;
+  }
+  

@@ -56,12 +56,18 @@
     height: 50px;
 }
 
-.user {
+.icon-pesquisa {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.user-icon{
     cursor: pointer;
-    margin-right: 6%;
+    margin-right: 20px;
     width: 50px;
     height: 50px;
-    
 }
 
 .nome-empresa {
@@ -100,15 +106,31 @@
 }
 
 .btn-form-log {
-    margin-right: 2%;
-    background: #00189B;
-    opacity: 73%;
+    background-color: transparent;
     font-family: "Roboto", sans-serif;
-    border-radius: 20px;
-    color: white;
-    padding: 8px 16px;
+    color: #333;
     border: none;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px;
+}
+
+.btn-form-log::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.btn-form-log:hover::after {
+    width: 0;
+    right: 100%;
 }
 
 .aside {
@@ -276,5 +298,34 @@ pre {
     margin-top: 80px;
 }
 
-
+.popup {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 100;
+    width: 180px;
+  }
+  
+  .popup p {
+    margin: 0 0 10px;
+    color: #333;
+  }
+  
+  .popup button {
+    width: 100%;
+    padding: 8px;
+    background-color: #735ff0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .popup button:hover {
+    background-color: #495ECD;
+  }
 

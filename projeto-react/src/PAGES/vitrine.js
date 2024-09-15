@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
 import styles from '../styles/vitrine.module.css';
@@ -12,6 +12,8 @@ function Vitrine() {
   const location = useLocation();
   const { currentUser, logout } = useAuth(); // Obtém o usuário atual e a função de logout
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // Estado para controlar o pop-up
+
   const handleLogin = () => {
     navigate('/login', { state: { from: location.pathname } });
   };
@@ -19,7 +21,7 @@ function Vitrine() {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/login'); // Redireciona para a página de login após logout
+      navigate('/'); // Redireciona para a página de login após logout
     } catch (error) {
       console.error('Erro ao sair:', error);
     }
@@ -46,6 +48,10 @@ function Vitrine() {
     alert('Código copiado para a área de transferência!');
   }
 
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen); // Alterna o pop-up
+  };
+
   return (
     <div className={styles.all}> {/* Começo da página vitrine */}
       <header className={styles['header-main']}> {/* Começo do header */}
@@ -62,12 +68,20 @@ function Vitrine() {
           </label>
         </div>
         <div className={styles['header-btn']}> {/* Começo do header botões de login e cadastro */}
-          {/* Se o usuário estiver logado, exibe o email e o botão de logout */}
           {currentUser ? (
             <div className={styles['user-info']}>
-              <img className={styles['user-icon']} src={userIcon} alt="Ícone de usuário" />
-              <span>Olá, {currentUser.email}</span>
-              <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+              <img
+                className={styles['user-icon']}
+                src={userIcon}
+                alt="Ícone de usuário"
+                onClick={togglePopup} // Abre o pop-up ao clicar
+              />
+              {isPopupOpen && (
+                <div className={styles.popup}> {/* Pop-up com as informações do usuário */}
+                  <p>Olá, {currentUser.displayName}</p>
+                  <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+                </div>
+              )}
             </div>
           ) : (
             <>
@@ -100,7 +114,6 @@ function Vitrine() {
           </div>
         </div>
         <div className="article-secundario">
-          {/* Conteúdo adicional pode ser adicionado aqui */}
           <button className={'teste'} onClick={() => navigate('/biblioteca')}>opa</button>
         </div>
       </article>
@@ -109,5 +122,3 @@ function Vitrine() {
 }
 
 export default Vitrine;
-
-

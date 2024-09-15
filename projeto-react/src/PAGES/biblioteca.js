@@ -1,60 +1,92 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/biblioteca.module.css';
 import logo from '../assets/logo.png';
-import user from '../assets/user.png';
+import lupa from '../assets/lupa.png';
 import copy from '../assets/documento.png';
-import { useNavigate } from 'react-router-dom';
+import userIcon from '../assets/user.png'; // Ícone de usuário
+import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
 
 function Biblioteca() {
-  // Cria uma referência distinta para cada caixa de código
   const codeRef1 = useRef(null);
   const codeRef2 = useRef(null);
 
   const navigate = useNavigate();
-  const delay = 500; // Delay de 500 milissegundos (0.5 segundos)
+  const { currentUser, logout } = useAuth(); // Obtém o usuário atual e a função de logout
 
-  const handleLogin = () => {
-    setTimeout(() => {
-      navigate('/login');
-    }, delay);
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // Estado para controlar o pop-up
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen); // Alterna a exibição do pop-up
   };
 
-  // Função de cópia que aceita uma referência como parâmetro
-  function copyCode(ref) {
-    const codeElement = ref.current; // Acessa o elemento <pre> através da ref
+  const handleLogin = () => {
+    navigate('/login');
+  };
 
-    // Cria um elemento de input temporário para usar como intermediário
+  const handleLogout = async () => {
+    try {
+      await logout(); // Executa o logout
+      navigate('/'); // Redireciona para a página principal (Vitrine)
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+  };
+
+  function copyCode(ref) {
+    const codeElement = ref.current;
     const tempInput = document.createElement('textarea');
     tempInput.value = codeElement.textContent;
     document.body.appendChild(tempInput);
-
-    // Seleciona o conteúdo do input e copia para a área de transferência
     tempInput.select();
     document.execCommand('copy');
-
-    // Remove o input temporário
     document.body.removeChild(tempInput);
-
-    // Feedback visual ou de áudio para indicar que o código foi copiado
     alert('Código copiado para a área de transferência!');
   }
 
   return (
     <div className={styles['all']}>
-      <header className={styles['header-main']}>
-        <div className={styles['header-info']}>
+      <header className={styles['header-main']}> {/* Header */}
+        <div className={styles['header-info']}> {/* Logo e nome da empresa */}
           <img className={styles.logo} src={logo} alt="logo da empresa focos" />
           <p className={styles['nome-empresa']}>Focos</p>
         </div>
-        <div className={styles['header-pesquisa']}>
+
+        <div className={styles['header-pesquisa']}> {/* Barra de pesquisa */}
           <input type="text" id="searchInput" placeholder="Pesquisar" className={styles['searchInput']} />
+          <label htmlFor="searchInput">
+            <span>
+              <img className={styles['icon-pesquisa']} src={lupa} alt="ícone de pesquisa" />
+            </span>
+          </label>
         </div>
-        <div className={styles['header-btn']}>
-          <img className={styles.user} src={user} alt="imagem user" />
+
+        <div className={styles['header-btn']}> {/* Botões de login/cadastro ou informações do usuário */}
+          {currentUser ? (
+            <div className={styles['user-info']}>
+              <img
+                className={styles['user-icon']}
+                src={userIcon}
+                alt="Ícone de usuário"
+                onClick={togglePopup} // Abre o pop-up ao clicar
+              />
+              {isPopupOpen && (
+                <div className={styles.popup}> {/* Pop-up com as informações do usuário */}
+                  <p>Olá, {currentUser.displayName || 'Usuário'}</p>
+                  <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
+              <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+            </>
+          )}
         </div>
       </header>
 
-      <aside className={styles.aside}>
+      <aside className={styles.aside}> {/* Sidebar */}
         <div className={styles.sidebar}>
           <a href="#" className={`${styles.sidebarLink} ${styles.active}`}>
             <span className="material-icons">dashboard</span>
@@ -68,7 +100,7 @@ function Biblioteca() {
             <span className="material-icons">receipt_long</span>
             <h3>Motora</h3>
           </a>
-          <a href="#" className={`${styles.sidebarLink} ${styles.active}`}>
+          <a href="#" className={styles.sidebarLink}>
             <span className="material-icons">insights</span>
             <h3>Auditiva</h3>
           </a>
@@ -83,25 +115,24 @@ function Biblioteca() {
           <a href="#" className={`${styles.sidebarLink} ${styles.logout}`}>
             <span className="material-icons">logout</span>
             <h3>Sair</h3>
-            <button onClick={handleLogin}>opa</button>
+            <button onClick={handleLogout}>Sair</button>
           </a>
         </div>
       </aside>
 
-      <section className={styles['container-sessao']}>
+      <section className={styles['container-sessao']}> {/* Conteúdo principal */}
         <div className={styles['titulo-container-sessao']}>
           <h1>Documentação</h1>
-          <p>A biblioteca Focos é projetada para facilitar a criação de componentes de interface de usuário acessíveis, seguindo as diretrizes da WCAG (Web Content Accessibility Guidelines). Esta documentação fornece uma visão completa sobre como instalar, utilizar e aproveitar os componentes acessíveis da biblioteca.</p>
+          <p>A biblioteca Focos é projetada para facilitar a criação de componentes de interface de usuário acessíveis...</p>
         </div>
 
         <div className={styles['componentes']}>
-          <h2 id='componentes'><u>componentes:</u></h2>
-          
-          {/* Componente 1 */}
+          <h2 id='componentes'><u>Componentes:</u></h2>
+
           <div className={styles['container-componentes']}>
             <div className={styles['conteudo-texto']}>
               <h4 className={styles['title-componente']}>AccessibleButton</h4>
-              <p className={styles['par-1']}>Um botão acessível que segue as <strong>melhores práticas de acessibilidade</strong>, incluindo o uso de atributos <u>ARIA</u> para melhorar a usabilidade por leitores de tela.</p>
+              <p className={styles['par-1']}>Um botão acessível que segue as melhores práticas...</p>
               <p className={styles['par-2']}>
                 - `label` (string): Texto descritivo para o botão. <br />
                 - `onClick` (function): Função a ser chamada quando o botão é clicado.
@@ -134,17 +165,13 @@ export default App;
             </div>
           </div>
 
-          {/* Componente 2 */}
           <div className={styles['container-componentes-1']}>
             <div className={styles['conteudo-texto']}>
               <h4 className={styles['title-componente']}>AccessibleInput</h4>
-              <p className={styles['par-1']}>Um campo de entrada acessível com suporte para rótulos e mensagens de erro, garantindo que <strong>todos os usuários</strong>, incluindo aqueles que utilizam <u>leitores de tela</u>, possam interagir com o componente eficientemente.</p>
+              <p className={styles['par-1']}>Um campo de entrada acessível com suporte para rótulos e mensagens de erro...</p>
               <p className={styles['par-2']}>
-                - id (string): Identificador exclusivo para o campo de entrada. Utilizado para associar o rótulo (label) ao campo de entrada. <br /><br />
-                - label (string): Texto descritivo para o campo de entrada, utilizado como rótulo.<br /><br />
-                - value (string): Valor atual do campo de entrada.<br /><br />
-                - onChange (function): Função a ser chamada quando o valor do campo de entrada muda.<br /><br />
-                - ariaDescribedBy (string): Atributo ARIA que associa o campo de entrada a uma descrição adicional (como uma ajuda ou mensagem de erro), através do ID do elemento descritivo.
+                - id (string): Identificador exclusivo para o campo de entrada...<br />
+                - label (string): Texto descritivo para o campo...
               </p>
             </div>
             <div className={styles['text-exemp-cod-1']}>
@@ -176,9 +203,6 @@ function PaginaExemplo() {
           Por favor, entre com seu texto aqui!
         </p>
       </form>
-      <div>
-        <p>Texto Digitado: {inputValue}</p>
-      </div>
     </div>
   );
 }
@@ -199,4 +223,6 @@ export default PaginaExemplo;
 }
 
 export default Biblioteca;
+
+
 
