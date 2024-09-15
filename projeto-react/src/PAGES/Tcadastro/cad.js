@@ -151,6 +151,11 @@ function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
+        <div className={styles.barsContainer}>
+        <div className={styles.redBar}></div>
+        <div className={styles.yellowBar}></div>
+        <div className={styles.greenBar}></div>
+        </div>
         <button type='submit' className={styles.button}>Cadastrar</button>
       </form>
     </div>
