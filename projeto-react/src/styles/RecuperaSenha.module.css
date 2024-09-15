@@ -48,6 +48,7 @@
   }
   
   .envia {
+    cursor: pointer;
     width: 150px;
     background-color: white;
     color: black;
@@ -58,6 +59,7 @@
   }
   
   .cancela {
+    cursor: pointer;
     width: 150px;
     background-color: rgb(119, 155, 202);
     color: black;
