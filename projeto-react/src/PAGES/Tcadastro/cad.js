@@ -33,6 +33,9 @@ function SignupPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [barColor, setBarColor] = useState('red'); // Cor da barra padrão
+  const [barHeight, setBarHeight] = useState('4px'); // Altura padrão da barra
+  const [hasAlerted, setHasAlerted] = useState(false); // Estado para controlar o alerta
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -59,8 +62,8 @@ function SignupPage() {
   }, []);
 
   useEffect(() => {
-    const globalStyles = `
-      * {
+    const globalStyles = `*
+      {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -94,7 +97,7 @@ function SignupPage() {
       setNome('');
       setEmail('');
       setPassword('');
-      alert("Bem vindo :)")
+      alert("Bem vindo :)");
       navigate("/login");
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
@@ -128,6 +131,40 @@ function SignupPage() {
     }
   };
 
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+
+    // Resetar cor e altura da barra
+    setBarColor('red');
+    setBarHeight('15px');
+
+    if (newPassword.length >= 8) {
+      if (validatePassword(newPassword)) {
+        setBarColor('green'); // Cor da barra quando a senha é forte
+        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+      } else {
+        setBarColor('yellow'); // Cor da barra quando a senha é mediana
+        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+      }
+    } else if (newPassword.length >= 4) {
+      // Se a senha tem pelo menos 4 caracteres e não é válida ainda
+      setBarColor('yellow'); // Cor da barra quando a senha é mediana
+      setBarHeight('15px');  // Aumenta a altura da barra em 5px
+    } else if (newPassword.length === 0) {
+      // Se a senha estiver vazia, reseta a barra
+      setBarColor('red'); // Cor da barra padrão
+      setBarHeight('9px'); // Altura padrão da barra
+    }
+  };
+
+  const handlePasswordFocus = () => {
+    if (!hasAlerted) {
+      alert("Para uma senha segura, digite no mínimo 8 caracteres, incluindo letras maiúsculas, números e caracteres especiais.");
+      setHasAlerted(true);
+    }
+  };
+
   return (
     <div className={`${styles.container} ${isActive ? styles.active : ''}`} id='container'>
       <div className={`${styles.formContainer} ${styles.signUp}`}>
@@ -158,13 +195,15 @@ function SignupPage() {
             type='password'
             value={senha}
             placeholder='Senha'
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
+            onFocus={handlePasswordFocus}
             className={styles.input}
           />
           <div className={styles.barsContainer}>
-            <div className={styles.redBar}></div>
-            <div className={styles.yellowBar}></div>
-            <div className={styles.greenBar}></div>
+            <div 
+              className={styles.bar} 
+              style={{ backgroundColor: barColor, height: barHeight }} >
+              </div>
           </div>
           <button type='submit' className={styles.button}>Cadastrar</button>
         </form>

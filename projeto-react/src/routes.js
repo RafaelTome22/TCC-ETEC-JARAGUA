@@ -12,7 +12,7 @@ import RecuperaSenha from './PAGES/RecuperaSenha.js';
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Vitrine />} />
+      <Route path="/" element={<SignupPage />} />
       <Route path="/biblioteca" element={<Biblioteca />} />
       <Route path="/login" element={<SignupPage />} />
       <Route path="/Visao" element={<Visao /> }  />
