@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+<<<<<<< HEAD
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, googleProvider } from '../../BD/firebase';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
 import { insercao } from '../../services/funcaoBD';
 import { useAuth } from '../../AuthContext';
+=======
+import bcrypt from 'bcryptjs';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from '../../BD/firebase';
+import { insercao } from '../../services/funcaoBD';
+>>>>>>> origin/API
 import styles from '../../styles/cad.module.css';
 
 library.add(fab);
@@ -34,8 +42,16 @@ function SignupPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
+<<<<<<< HEAD
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+=======
+  const [barColor, setBarColor] = useState('red'); // Cor da barra padrão
+  const [barHeight, setBarHeight] = useState('4px'); // Altura padrão da barra
+  const [hasAlerted, setHasAlerted] = useState(false); // Estado para controlar o alerta
+  const navigate = useNavigate();
+  const location = useLocation();
+>>>>>>> origin/API
 
   useEffect(() => {
     document.body.style.backgroundColor = '#c9d6ff';
@@ -60,8 +76,13 @@ function SignupPage() {
   }, []);
 
   useEffect(() => {
+<<<<<<< HEAD
     const globalStyles = `
       * {
+=======
+    const globalStyles = `*
+      {
+>>>>>>> origin/API
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -95,7 +116,12 @@ function SignupPage() {
       setNome('');
       setEmail('');
       setPassword('');
+<<<<<<< HEAD
       navigate("/home");
+=======
+      alert("Bem vindo :)");
+      navigate("/login");
+>>>>>>> origin/API
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
       alert("Erro ao cadastrar. Tente novamente.");
@@ -110,10 +136,62 @@ function SignupPage() {
     }
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
+<<<<<<< HEAD
       navigate("/home");
     } catch (error) {
       console.error("Erro ao fazer login:", error);
       alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
+=======
+      const from = location.state?.from || '/';
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error('Erro no login:', error);
+      alert('Erro ao fazer login. Verifique suas credenciais.');
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/");
+    } catch (error) {
+      console.error('Erro no login com Google:', error);
+      alert('Erro ao fazer login com Google. Tente novamente.');
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+
+    // Resetar cor e altura da barra
+    setBarColor('red');
+    setBarHeight('15px');
+
+    if (newPassword.length >= 8) {
+      if (validatePassword(newPassword)) {
+        setBarColor('green'); // Cor da barra quando a senha é forte
+        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+      } else {
+        setBarColor('yellow'); // Cor da barra quando a senha é mediana
+        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+      }
+    } else if (newPassword.length >= 4) {
+      // Se a senha tem pelo menos 4 caracteres e não é válida ainda
+      setBarColor('yellow'); // Cor da barra quando a senha é mediana
+      setBarHeight('15px');  // Aumenta a altura da barra em 5px
+    } else if (newPassword.length === 0) {
+      // Se a senha estiver vazia, reseta a barra
+      setBarColor('red'); // Cor da barra padrão
+      setBarHeight('9px'); // Altura padrão da barra
+    }
+  };
+
+  const handlePasswordFocus = () => {
+    if (!hasAlerted) {
+      alert("Para uma senha segura, digite no mínimo 8 caracteres, incluindo letras maiúsculas, números e caracteres especiais.");
+      setHasAlerted(true);
+>>>>>>> origin/API
     }
   };
 
@@ -140,6 +218,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+<<<<<<< HEAD
             </a>
             <a href='#' className={styles.icon}>
               <FontAwesomeIcon icon={['fab', 'facebook-f']} />
@@ -149,6 +228,9 @@ function SignupPage() {
             </a>
             <a href='#' className={styles.icon}>
               <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+=======
+              Continue com sua conta Google
+>>>>>>> origin/API
             </a>
           </div>
           <span>Use seu Email e Senha</span>
@@ -170,9 +252,22 @@ function SignupPage() {
             type='password'
             value={senha}
             placeholder='Senha'
+<<<<<<< HEAD
             onChange={(e) => setPassword(e.target.value)}
             className={styles.input}
           />
+=======
+            onChange={handlePasswordChange}
+            onFocus={handlePasswordFocus}
+            className={styles.input}
+          />
+          <div className={styles.barsContainer}>
+            <div 
+              className={styles.bar} 
+              style={{ backgroundColor: barColor, height: barHeight }} >
+              </div>
+          </div>
+>>>>>>> origin/API
           <button type='submit' className={styles.button}>Cadastrar</button>
         </form>
       </div>
@@ -183,6 +278,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+<<<<<<< HEAD
             </a>
             <a href='#' className={styles.icon}>
               <FontAwesomeIcon icon={['fab', 'facebook-f']} />
@@ -192,6 +288,9 @@ function SignupPage() {
             </a>
             <a href='#' className={styles.icon}>
               <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+=======
+              Continue com a sua conta Google
+>>>>>>> origin/API
             </a>
           </div>
           <span>Ou use seu Email e Senha</span>
@@ -209,7 +308,11 @@ function SignupPage() {
             onChange={(e) => setLoginSenha(e.target.value)}
             className={styles.input}
           />
+<<<<<<< HEAD
           <a href='PasswordReset'>Esqueceu sua senha?</a>
+=======
+          <a href='PasswordReset' className={styles.aPass}>Esqueceu sua senha?</a>
+>>>>>>> origin/API
           <button type='submit' className={styles.button}>Login</button>
         </form>
       </div>
@@ -233,4 +336,7 @@ function SignupPage() {
 }
 
 export default SignupPage;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/API

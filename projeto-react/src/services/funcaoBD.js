@@ -9,6 +9,7 @@ export async function insercao(userData, setNome, setEmail, setPassword) {
       email: email,
       password: hashedPassword
     });
+<<<<<<< HEAD
     // Limpar os campos do formulário após inserção
     setNome('');
     setEmail('');
@@ -16,6 +17,11 @@ export async function insercao(userData, setNome, setEmail, setPassword) {
     alert("Seja Bem-vindo(a) " + nome)
   } catch (error) {
     console.error("Erro ao inserir dados:", error);
+=======
+    
+  } catch (error) {
+    
+>>>>>>> origin/API
   }
 }
 

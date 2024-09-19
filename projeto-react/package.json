@@ -12,13 +12,19 @@
     "@testing-library/user-event": "^13.5.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
     "firebase": "^10.12.2",
+=======
+    "firebase": "^10.13.1",
+    "focos": "^0.0.5",
+    "framer-motion": "^11.3.30",
+>>>>>>> origin/API
     "react": "^18.3.0",
     "react-dom": "^18.3.1",
     "react-draggable": "^4.4.6",
     "react-image": "^4.1.0",
     "react-router": "^6.23.0",
-    "react-router-dom": "^6.23.0",
+    "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
