@@ -92,6 +92,17 @@ function Vitrine() {
         </div> {/* Fim do header botões de login e cadastro */}
       </header> {/* Fim do header */}
 
+      <div className='apresentacao'> {/* inicio do container de apresentação */}
+        <div className='conteudo-apresentacao'> {/* inicio do container de conteudo da apresentação */}
+            <div className='texto-conteudo-apresentacao'> {/* inicio do container de texto do conteudo da apresentação */}
+              <h1 className='titulo-apresentacao'>Bem-vindo ao Focos </h1>
+            </div> {/* fim do container de texto do conteudo da apresentação */}
+            <div className='image-conteudo-apresentacao'> {/* inicio do container de imagem do conteudo da apresentação */}
+
+            </div> {/* fim do container de texto do conteudo da apresentação */}
+        </div> {/* fim do container de conteudo da apresentação */}
+      </div> {/* fim do container de apresentação */}
+
       <article className={styles['article-body']}>
         <div className={styles['article-main']}>
           <div className={styles['exemp-cod']}>
