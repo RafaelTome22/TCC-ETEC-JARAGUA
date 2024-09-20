@@ -92,13 +92,20 @@ function Vitrine() {
         </div> {/* Fim do header botões de login e cadastro */}
       </header> {/* Fim do header */}
 
-      <div className='apresentacao'> {/* inicio do container de apresentação */}
-        <div className='conteudo-apresentacao'> {/* inicio do container de conteudo da apresentação */}
-            <div className='texto-conteudo-apresentacao'> {/* inicio do container de texto do conteudo da apresentação */}
-              <h1 className='titulo-apresentacao'>Bem-vindo ao Focos </h1>
+      <div className={styles['apresentacao']}> {/* inicio do container de apresentação */}
+        <div className={styles['conteudo-apresentacao']}> {/* inicio do container de conteudo da apresentação */}
+            <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
+              <div className={styles['texto-conteudo-apresentacao-main']}>
+                  <h1>Eleve seu negócio a outro nível <strong>com um Front-end de qualidade!</strong></h1>
+                  <p>Hello World! Eu sou o Rafael Antônio, desenvolvedor Front-end com especialidade em HTML e CSS. Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?</p>
+              </div>
+              <div className={styles['btn-nav']}>
+                <a href="https://www.instagram.com/devcontentss/" class="links">Instagram</a>
+                <a href="https://github.com/RafaelTome22/" class="links">GitHub</a>
+              </div>
             </div> {/* fim do container de texto do conteudo da apresentação */}
-            <div className='image-conteudo-apresentacao'> {/* inicio do container de imagem do conteudo da apresentação */}
-
+            <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
+              <h1 className='titulo-apresentacao'>Bem-vindo ao Focos </h1>
             </div> {/* fim do container de texto do conteudo da apresentação */}
         </div> {/* fim do container de conteudo da apresentação */}
       </div> {/* fim do container de apresentação */}
