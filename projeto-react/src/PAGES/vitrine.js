@@ -6,6 +6,7 @@ import logo from '../assets/logo.png';
 import lupa from '../assets/lupa.png';
 import copy from '../assets/documento.png';
 import userIcon from '../assets/user.png'; // Um ícone de usuário para quando o user estiver logado
+import logoSite from '../assets/logoSite.png'
 
 function Vitrine() {
   const navigate = useNavigate();
@@ -99,13 +100,13 @@ function Vitrine() {
                   <h1>Eleve seu negócio a outro nível <strong>com um Front-end de qualidade!</strong></h1>
                   <p>Hello World! Eu sou o Rafael Antônio, desenvolvedor Front-end com especialidade em HTML e CSS. Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?</p>
               </div>
-              <div className={styles['btn-nav']}>
-                <a href="https://www.instagram.com/devcontentss/" class="links">Instagram</a>
-                <a href="https://github.com/RafaelTome22/" class="links">GitHub</a>
+              <div className={styles['link']}>
+                <a href="https://www.instagram.com/devcontentss/" className={styles['links']}>Instagram</a>
+                <a href="https://github.com/RafaelTome22/" className={styles['links']}>GitHub</a>
               </div>
             </div> {/* fim do container de texto do conteudo da apresentação */}
             <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
-              <h1 className='titulo-apresentacao'>Bem-vindo ao Focos </h1>
+              <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
             </div> {/* fim do container de texto do conteudo da apresentação */}
         </div> {/* fim do container de conteudo da apresentação */}
       </div> {/* fim do container de apresentação */}
