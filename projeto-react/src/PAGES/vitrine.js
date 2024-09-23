@@ -95,20 +95,30 @@ function Vitrine() {
 
       <div className={styles['apresentacao']}> {/* inicio do container de apresentação */}
         <div className={styles['conteudo-apresentacao']}> {/* inicio do container de conteudo da apresentação */}
-            <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
-              <div className={styles['texto-conteudo-apresentacao-main']}>
-                  <h1>Explore o Digital com Liberdade, <strong>Escolha Focos!</strong></h1>
-                  <p>"A biblioteca acessível que transforma a experiência de todos os usuários, tornando a web mais inclusiva e intuitiva para desenvolvedores.</p>
-                  <p>Adote o Focos agora e desenvolva interfaces que vão além do visual, garantindo acessibilidade e usabilidade para todos. Torne seus projetos mais inclusivos com apenas algumas linhas de código!"</p>
-              </div>
-              <div className={styles['link']}>
-                <a href="biblioteca" className={styles['links']}>Aprenda Focos</a>
-                <a href="https://github.com/RafaelTome22/" className={styles['links']}>Ler mais...</a>
-              </div>
-            </div> {/* fim do container de texto do conteudo da apresentação */}
-            <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
-              <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
-            </div> {/* fim do container de texto do conteudo da apresentação */}
+          <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
+            <div className={styles['texto-conteudo-apresentacao-main']}>
+              <h1 className={styles['titulo-container']}>Explore o Digital com Liberdade, <strong>Escolha Focos!</strong></h1>
+              <p className={styles['pag-container']}>“A biblioteca acessível que transforma a experiência de todos os usuários, tornando a web mais inclusiva e intuitiva para desenvolvedores.”</p>
+              <p className={styles['pag-container']}>Adote o Focos agora e desenvolva interfaces que vão além do visual, garantindo acessibilidade e usabilidade para todos. Torne seus projetos mais inclusivos com apenas algumas linhas de código!</p>
+            </div>
+            <div className={styles.link}>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Aprenda Focos
+              </button>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Ler mais...
+              </button>
+            </div>
+          </div> {/* fim do container de texto do conteudo da apresentação */}
+          <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
+            <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
+          </div> {/* fim do container de imagem do conteudo da apresentação */}
         </div> {/* fim do container de conteudo da apresentação */}
       </div> {/* fim do container de apresentação */}
 
@@ -142,3 +152,4 @@ function Vitrine() {
 }
 
 export default Vitrine;
+
