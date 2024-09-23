@@ -97,12 +97,13 @@ function Vitrine() {
         <div className={styles['conteudo-apresentacao']}> {/* inicio do container de conteudo da apresentação */}
             <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
               <div className={styles['texto-conteudo-apresentacao-main']}>
-                  <h1>Eleve seu negócio a outro nível <strong>com um Front-end de qualidade!</strong></h1>
-                  <p>Hello World! Eu sou o Rafael Antônio, desenvolvedor Front-end com especialidade em HTML e CSS. Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?</p>
+                  <h1>Explore o Digital com Liberdade, <strong>Escolha Focos!</strong></h1>
+                  <p>"A biblioteca acessível que transforma a experiência de todos os usuários, tornando a web mais inclusiva e intuitiva para desenvolvedores.</p>
+                  <p>Adote o Focos agora e desenvolva interfaces que vão além do visual, garantindo acessibilidade e usabilidade para todos. Torne seus projetos mais inclusivos com apenas algumas linhas de código!"</p>
               </div>
               <div className={styles['link']}>
-                <a href="https://www.instagram.com/devcontentss/" className={styles['links']}>Instagram</a>
-                <a href="https://github.com/RafaelTome22/" className={styles['links']}>GitHub</a>
+                <a href="biblioteca" className={styles['links']}>Aprenda Focos</a>
+                <a href="https://github.com/RafaelTome22/" className={styles['links']}>Ler mais...</a>
               </div>
             </div> {/* fim do container de texto do conteudo da apresentação */}
             <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
