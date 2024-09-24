@@ -112,7 +112,7 @@ function Vitrine() {
                 onClick={() => navigate('/biblioteca')}
                 className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
               >
-                Aprenda Focos
+                Componentes Focos
               </button>
               <button
                 onClick={() => navigate('/biblioteca')}
@@ -150,7 +150,7 @@ function Vitrine() {
           </div>
         </div>
         <div className="article-secundario">
-          <button className={'teste'} onClick={() => navigate('/biblioteca')}>opa</button>
+          
         </div>
       </article>
     </div>
