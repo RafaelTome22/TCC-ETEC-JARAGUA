@@ -15,7 +15,7 @@ import Home from '../assets/home.png'; // Ícone de home
 import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
 
 
-function Biblioteca() {
+function Componentes() {
   const codeRef1 = useRef(null);
   const codeRef2 = useRef(null);
 
@@ -123,7 +123,7 @@ function Biblioteca() {
                 src={componentes}
                 
               />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/componentes')}>Componentes</button>
+            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Componentes</button>
           </div>
           <div className={styles['btn-aside']}>
             <img
@@ -167,68 +167,104 @@ function Biblioteca() {
         <div className={styles['titulo-container-sessao']}>
           <h1>Documentação</h1>
           <p>A biblioteca Focos é projetada para facilitar a criação de componentes de interface de usuário acessíveis...</p>
+        </div>
 
-          <h1>Explorando a Acessibilidade Digital</h1>
-    <p>
-        Acessibilidade digital é um desafio que permeia o desenvolvimento moderno, e a biblioteca Focos surge como uma solução inovadora e transformadora para garantir que todos os usuários, independentemente de suas habilidades, tenham acesso pleno e equitativo à web.
-    </p>
-    <p>
-        No vasto e complexo mundo digital, onde interações são moldadas por interfaces visuais e funcionais, muitos usuários, especialmente aqueles com deficiências, frequentemente se deparam com barreiras invisíveis que limitam sua capacidade de navegar e interagir. <strong>Pensando no desenvolvedor, temos como nosso primeiro produto uma biblioteca de componentes React acessíveis, que não apenas automatiza a inclusão de atributos ARIA, mas também segue rigorosamente as diretrizes da WCAG (Web Content Accessibility Guidelines).</strong> Ao utilizar Focos, os desenvolvedores garantem que seus projetos atendam aos mais altos padrões de acessibilidade, promovendo a inclusão sem a necessidade de conhecimentos aprofundados na área.
-    </p>
-    <p>
-        <strong>E o melhor, nós podemos demonstrar isso, mostrando como a acessibilidade pode ser incorporada de forma simples e eficaz em qualquer projeto.</strong>
-    </p>
+        <div className={styles['componentes']}>
+          <h2 id='componentes'><u>Componentes:</u></h2>
 
-    <h1>Potencial de Adoção da Focos</h1>
-    <p>
-        <strong>A Focos não é apenas uma ferramenta; é um catalisador para a mudança.</strong> Possui um imenso potencial de adoção por empresas que desejam não apenas cumprir as regulamentações de acessibilidade, mas também melhorar significativamente a experiência de seus usuários. Sua abordagem proativa é especialmente atraente para startups ágeis, agências de desenvolvimento inovadoras e grandes corporações que buscam otimizar seus processos de produção enquanto garantem acessibilidade em todas as suas interfaces.
-    </p>
-    <p>
-        <strong>E quais são algumas das vantagens que oferecemos?</strong>
-    </p>
+          <div className={styles['container-componentes']}>
+            <div className={styles['conteudo-texto']}>
+              <h4 className={styles['title-componente']}>AccessibleButton</h4>
+              <p className={styles['par-1']}>Um botão acessível que segue as melhores práticas de acessibilidade...</p>
+              <p className={styles['par-2']}>
+                Atributos:  <br/><br/>
+                - `label` (string): Texto descritivo para o botão. <br />
+                - `onClick` (function): Função a ser chamada quando o botão é clicado.
+              </p>
+            </div>
+            <div className={styles['text-exemp-cod-1']}>
+              <h1 className={styles['title-codigo']}>Exemplo de código: AccessibleButton</h1>
+              <div className={styles['code-container']}>
+                <pre ref={codeRef1} id="code1">
+                  {`import React from 'react';
+import { AccessibleButton } from 'focos';
 
-    <h1>Vantagens da Focos</h1>
-    <ol>
-        <li><strong>Facilidade de uso:</strong> Com a Focos, basta importar e usar os componentes prontos. Não há necessidade de configurações complexas, permitindo que os desenvolvedores se concentrem na criatividade e na funcionalidade, sem se perder em detalhes técnicos.</li>
-        <li><strong>Automação de práticas acessíveis:</strong> A inclusão de atributos ARIA e a conformidade com a WCAG são feitas automaticamente, eliminando a carga de trabalho manual e potencialmente propensa a erros.</li>
-        <li><strong>Economia de tempo:</strong> Ao permitir que os desenvolvedores concentrem seus esforços no design e na funcionalidade do site, enquanto a acessibilidade é gerenciada pela Focos, garantimos um fluxo de trabalho mais eficiente e produtivo.</li>
-    </ol>
-    <p>
-        <strong>E quais são os impactos dessa biblioteca?</strong>
-    </p>
+const App = () => {
+  const handleClick = () => {
+    alert('Você clicou em mim!');
+  };
+  return (
+    <div>
+      <AccessibleButton label="Clique em mim" onClick={handleClick} />
+    </div>
+  );
+};
+export default App;
+`}
+                </pre>
+                <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef1)}>
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
+                </button>
+              </div>
+            </div>
+          </div>
 
-    <h1>Impactos da Focos</h1>
-    <p>
-        <strong>A biblioteca Focos não apenas aprimora a acessibilidade; ela permitirá que desenvolvedores transformem suas aplicações, tornando a web um espaço mais inclusivo para todos os usuários, independentemente de suas habilidades.</strong> Com a Focos, o acesso à informação e aos serviços digitais se torna um direito universal, promovendo a diversidade e a igualdade de oportunidades.
-    </p>
+          <div className={styles['container-componentes-1']}>
+            <div className={styles['conteudo-texto']}>
+              <h4 className={styles['title-componente']}>AccessibleInput</h4>
+              <p className={styles['par-1']}>Um campo de entrada acessível com suporte para rótulos e mensagens de erro...</p>
+              <p className={styles['par-2']}>
+                Atributos:  <br/><br/>
+                - id (string): Identificador exclusivo para o campo de entrada...<br />
+                - label (string): Texto descritivo para o campo...
+              </p>
+            </div>
+            <div className={styles['text-exemp-cod-1']}>
+              <h1 className={styles['title-codigo']}>Exemplo de código: AccessibleInput</h1>
+              <div className={styles['code-container']}>
+                <pre ref={codeRef2} id="code2">
+                  {`import React, { useState } from 'react';
+import {AccessibleInput} from 'focos';
 
-    <h1>Exemplos de Melhorias</h1>
-    <p>
-        <strong>Com a Focos, as interfaces desenvolvidas apresentam melhorias notáveis nas pontuações de acessibilidade em ferramentas de auditoria como Lighthouse.</strong> Isso significa que cada projeto que incorpora nossa biblioteca não só se torna mais inclusivo, mas também mais eficiente em termos de usabilidade. Além disso, os usuários finais com deficiência poderão navegar pelas interfaces de maneira mais intuitiva e eficaz, transformando sua experiência em algo agradável e sem frustrações.
-    </p>
-    <p>
-        <strong>Mas… qual seria o resumo da solução?</strong>
-    </p>
+function PaginaExemplo() {
+  const [inputValue, setInputValue] = useState('');
 
-    <h1>Resumo da Solução</h1>
-    <p>
-        <strong>A Focos é uma solução prática e eficaz para a falta de acessibilidade digital, permitindo que desenvolvedores implementem acessibilidade de forma rápida e sem complicações.</strong> Ao eliminar as barreiras que limitam a inclusão, a Focos promove um ambiente digital onde todos têm a oportunidade de interagir e participar plenamente.
-    </p>
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
-    <h1>Próximos Passos</h1>
-    <p>
-        <strong>Os próximos passos incluem a expansão contínua da biblioteca, com novos componentes e funcionalidades que atendem às necessidades em constante evolução do desenvolvimento web.</strong> Além disso, estamos comprometidos em colaborar com a comunidade de desenvolvedores para coletar feedback e melhorar continuamente o produto, garantindo que a Focos permaneça na vanguarda da acessibilidade digital.
-    </p>
-    <p>
-        <strong>Explorar a Focos é mais do que uma simples implementação técnica; é um passo significativo em direção a um futuro digital mais inclusivo e igualitário. Cada componente acessível que os desenvolvedores integram em seus projetos não só melhora a experiência do usuário, mas também promove uma internet onde todos podem navegar, aprender e se conectar sem barreiras.</strong>
-    </p>
+  return (
+    <div>
+      <h1>Exemplo de página com botão acessível focos</h1>
+      <form>
+        <AccessibleInput
+          id="exampleInput"
+          label="Example Input"
+          value={inputValue}
+          onChange={handleInputChange}
+          ariaDescribedBy="inputDescription"
+        />
+        <p id="inputDescription" style={{ fontSize: '12px', color: '#666' }}>
+          Por favor, entre com seu texto aqui!
+        </p>
+      </form>
+    </div>
+  );
+}
+
+export default PaginaExemplo;
+`}
+                </pre>
+                <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef2)}>
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
   );
 }
 
-export default Biblioteca;
-
-
-
+export default Componentes;

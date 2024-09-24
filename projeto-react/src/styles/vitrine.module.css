@@ -421,7 +421,6 @@ pre {
 }
 
 .article-secundario {
-    border: 1px solid red;
     width: 100vw;
     height: 90vh;
     display: flex;
@@ -437,7 +436,6 @@ pre {
 }
 
 .article-infos-empresa {
-    border: 1px solid black;
     padding: 2%;
     width: 1220px;
     height: 550px;

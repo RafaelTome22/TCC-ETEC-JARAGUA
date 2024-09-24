@@ -21,6 +21,7 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
+
 .all {
     width: 100vw;
     height: auto;
@@ -134,9 +135,8 @@
 }
 
 .aside {
-
     width: 250px;
-    height: 90vh;
+    height: 90vh; /* Altura fixa */
     position: fixed;
     left: 6px;
     top: 100px;
@@ -145,39 +145,41 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Garante que o conteúdo se ajuste */
+    justify-content: space-between;
+    animation: slideInLeft 0.8s ease both; /* Animação ao carregar */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transição suave */
 }
 
-.conteudo-asise {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Faz o conteúdo preencher o espaço */
+/* Animação aside */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
+/* Animação ao passar o mouse sobre o aside */
+.aside:hover {
+    transform: translateX(10px); /* Movimento suave ao passar o mouse */
+    opacity: 0.95; /* Leve mudança de opacidade */
+}
+
+/* Botões e ícones aside */
 .btn-aside {
     margin: 10px;
     display: flex;
     align-items: center;
-    position: relative; /* Para posicionar o underline */
+    position: relative;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.btn-aside-style, 
-.btn-aside-style-dif {
-    border-style: none;
-    background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
-    position: relative; /* Para usar o ::after */
-}
-
-.btn-aside-style {
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.btn-aside-style-dif {
-    font-size: 14px;
-    cursor: pointer;
+.btn-aside:hover {
+    background-color: var(--color-light);
 }
 
 .icone-aside {
@@ -185,48 +187,96 @@
     margin-right: 10px;
 }
 
-.icone-aside-dif {
-    width: 45px;
-    margin-right: 10px;
+.btn-aside-style, 
+.btn-aside-style-dif {
+    border-style: none;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
 }
 
-/* Cria o underline para todos os botões com o mesmo estilo */
-.btn-aside-style::after, 
-.btn-aside-style-dif::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%; /* Define o comprimento do underline */
-    height: 2px; /* Define a espessura do underline */
-    background-color: black; /* Define a cor do underline */
+.btn-aside-style {
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.btn-aside:last-child {
-    margin-top: auto; /* Alinha o último botão ao fundo */
-}
-
+/* Estilos para o container-sessao */
 .container-sessao {
     border-radius: 8px;
     width: 65%;
-    height: 85vh;
+    height: 90vh; /* Altura fixa igual ao aside */
     margin-top: 100px;
     margin-left: 300px;
+    overflow-y: hidden; /* Esconde o overflow inicialmente */
+    position: relative;
+    background-color: #ffffff11; /* Fundo semi-transparente para suavidade */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordas suaves */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+    transition: all 0.3s ease; /* Animação para a aparência suave */
+
 }
 
+.container-sessao:hover {
+    overflow-y: scroll; /* Ativa a barra de rolagem ao passar o mouse */
+}
+
+/* Estilos da barra de rolagem personalizada */
+.container-sessao::-webkit-scrollbar {
+    width: 10px;
+}
+
+.container-sessao::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Dá uma borda suave ao thumb */
+}
+
+.container-sessao::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Suave animação ao rolar */
+.container-sessao {
+    scroll-behavior: smooth;
+}
+
+/* Estilos para o conteúdo do texto */
 .titulo-container-sessao {
-    border-bottom: 0.5px solid #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease both;
 }
 
-.titulo-container-sessao h1 {
-    color: #fefefe;
-    font-family: 'Krona One', sans-serif;
-}
-
-.titulo-container-sessao p {
-    color: #fefefe;
+.titulo-container-sessao h1, .titulo-container-sessao p, .titulo-container-sessao ol{
+    color: #f0f0f0;
     font-family: 'Montserrat', sans-serif;
     text-align: justify;
+    margin-top: 25px;
+}
+
+/* Animação para o conteúdo da sessão */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação suave ao carregar os elementos */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .componentes h2 {
@@ -299,8 +349,8 @@ pre {
 
 .btn-copy {
     position: absolute;
-    top: 3px;
-    right: 3px;
+    top: 15px;
+    right: 10px;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -314,8 +364,6 @@ pre {
 
 .container-componentes-1 {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-top: 80px;
 }
 
