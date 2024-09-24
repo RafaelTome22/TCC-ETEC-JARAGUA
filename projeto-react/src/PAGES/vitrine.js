@@ -87,13 +87,13 @@ function Vitrine() {
           ) : (
             <>
               <div className={styles.link}>
-              <button
-                onClick={() => navigate('/login')}
-                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
-              >
-                Login
-              </button>
-               </div>
+                <button
+                  onClick={() => navigate('/login')}
+                  className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+                >
+                  Login
+                </button>
+              </div>
             </>
           )}
         </div> {/* Fim do header botões de login e cadastro */}
@@ -129,6 +129,7 @@ function Vitrine() {
       </div> {/* fim do container de apresentação */}
 
       <article className={styles['article-body']}>
+      <h1 className={styles['titulo-article-body']}>Os Primeiros Passos para uma Web mais Inclusiva!</h1>
         <div className={styles['article-main']}>
           <div className={styles['exemp-cod']}>
             <div className={styles['text-exemp-cod']}>
@@ -145,12 +146,16 @@ function Vitrine() {
           </div>
           <div className={styles['text-exemp']}>
             <div className={styles['explicacao-exemp-cod']}>
-              <h1>Sobre</h1>
+              <h1>Instruções de Uso:</h1>
+              <p className={styles['par-text-exemp']}>Execute o comando 'npm install focos' no terminal de seu editor de código para instalar o focos.</p>
             </div>
           </div>
         </div>
-        <div className="article-secundario">
-          
+        <div className={styles["article-secundario"]}>
+          <div className={styles['article-infos-empresa']}>
+            <h1 className={styles['titulo-article-infos-empresa']}>Sobre a Focos</h1>
+
+          </div>
         </div>
       </article>
     </div>
