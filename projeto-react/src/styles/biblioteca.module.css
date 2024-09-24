@@ -134,54 +134,76 @@
 }
 
 .aside {
+
     width: 250px;
-    height: 85vh;
+    height: 90vh;
     position: fixed;
     left: 6px;
     top: 100px;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
-    padding: 20px 0;
     border-radius: 8px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between; /* Garante que o conteúdo se ajuste */
 }
 
-.sidebar {
+.conteudo-asise {
     display: flex;
     flex-direction: column;
+    flex-grow: 1; /* Faz o conteúdo preencher o espaço */
 }
 
-.sidebarLink {
+.btn-aside {
+    margin: 10px;
     display: flex;
-   
-    color: var(--color-info-dark);
-    height: 3.7rem;
-    gap: 1rem;
-    position: relative;
-    margin-left: 1rem;
-    transition: all 0.3s ease;
+    align-items: center;
+    position: relative; /* Para posicionar o underline */
+    cursor: pointer;
 }
 
-.sidebarLink span {
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
+.btn-aside-style, 
+.btn-aside-style-dif {
+    border-style: none;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    position: relative; /* Para usar o ::after */
 }
 
-h3 {
-    color: black; 
-    transition: color 0.2s ease;
-    cursor: pointer; 
+.btn-aside-style {
+    font-size: 20px;
+    cursor: pointer;
 }
 
-h3:hover {
-    color: #735ff0; 
+.btn-aside-style-dif {
+    font-size: 14px;
+    cursor: pointer;
 }
 
-.logout {
+.icone-aside {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.icone-aside-dif {
+    width: 45px;
+    margin-right: 10px;
+}
+
+/* Cria o underline para todos os botões com o mesmo estilo */
+.btn-aside-style::after, 
+.btn-aside-style-dif::after {
+    content: '';
     position: absolute;
-    bottom: 0.1rem;
-    width: 100%;
+    left: 0;
+    bottom: -2px;
+    width: 100%; /* Define o comprimento do underline */
+    height: 2px; /* Define a espessura do underline */
+    background-color: black; /* Define a cor do underline */
+}
+
+.btn-aside:last-child {
+    margin-top: auto; /* Alinha o último botão ao fundo */
 }
 
 .container-sessao {
@@ -327,4 +349,59 @@ pre {
   .popup button:hover {
     background-color: #495ECD;
   }
+
+
+  .btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+    font-family: 'Roboto', sans-serif; /* Adiciona a fonte */
+    font-weight: bold; /* Aumenta a espessura da fonte */
+    border-style: none;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn-white:hover {
+    background-color: #f0f0f0; /* Muda a cor ao passar o mouse */
+}
+
+.btn:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white:after {
+    background-color: #fff;
+}
+
+.btn:hover:after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
 

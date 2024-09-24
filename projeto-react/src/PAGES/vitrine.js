@@ -86,8 +86,14 @@ function Vitrine() {
             </div>
           ) : (
             <>
-              <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
-              <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+              <div className={styles.link}>
+              <button
+                onClick={() => navigate('/login')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Login
+              </button>
+               </div>
             </>
           )}
         </div> {/* Fim do header botões de login e cadastro */}

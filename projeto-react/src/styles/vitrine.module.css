@@ -147,7 +147,7 @@ html, body {
 }
 
 .texto-conteudo-apresentacao {
-    width: 555px;
+    width: 550px;
     display: flex;
     flex-direction: column;
 }

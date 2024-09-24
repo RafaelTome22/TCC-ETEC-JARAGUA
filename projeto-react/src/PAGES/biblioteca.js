@@ -5,7 +5,15 @@ import logo from '../assets/logo.png';
 import lupa from '../assets/lupa.png';
 import copy from '../assets/documento.png';
 import userIcon from '../assets/user.png'; // Ícone de usuário
+import Logout from '../assets/logout.png'; // Ícone de saída
+import documentacao from '../assets/documentacao.png'; // Ícone de documentação
+import componentes from '../assets/componentes.png'; // Ícone de componentes
+import Code from '../assets/code.png'; // Ícone de código
+import Home from '../assets/home.png'; // Ícone de home
+
+
 import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
+
 
 function Biblioteca() {
   const codeRef1 = useRef(null);
@@ -79,44 +87,79 @@ function Biblioteca() {
             </div>
           ) : (
             <>
-              <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
-              <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+             <div className={styles.link}>
+              <button
+                onClick={() => navigate('/login')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Login
+              </button>
+               </div>
             </>
           )}
         </div>
       </header>
 
       <aside className={styles.aside}> {/* Sidebar */}
-        <div className={styles.sidebar}>
-          <a href="#" className={`${styles.sidebarLink} ${styles.active}`}>
-            <span className="material-icons">dashboard</span>
-            <h3>Biblioteca</h3>
-          </a>
-          <a href="#" className={styles.sidebarLink}>
-            <span className="material-icons">person_outline</span>
-            <h3>Visual</h3>
-          </a>
-          <a href="#" className={styles.sidebarLink}>
-            <span className="material-icons">receipt_long</span>
-            <h3>Motora</h3>
-          </a>
-          <a href="#" className={styles.sidebarLink}>
-            <span className="material-icons">insights</span>
-            <h3>Auditiva</h3>
-          </a>
-          <a href="#" className={styles.sidebarLink}>
-            <span className="material-icons">mail_outline</span>
-            <h3>Análise</h3>
-          </a>
-          <a href="#" className={styles.sidebarLink}>
-            <span className="material-icons">settings</span>
-            <h3>Configurações</h3>
-          </a>
-          <a href="#" className={`${styles.sidebarLink} ${styles.logout}`}>
-            <span className="material-icons">logout</span>
-            <h3>Sair</h3>
-            <button onClick={handleLogout}>Sair</button>
-          </a>
+        <div className={styles['conteudo-asise']}>
+        <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside']}
+                src={Home}
+              />
+            <button className={styles['btn-aside-style']} onClick={() => navigate('/')}>home</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside']}
+                src={documentacao}
+                
+              />
+            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Documentação</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside']}
+                src={componentes}
+                
+              />
+            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Componentes</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside-dif']}
+                src={Code}
+              />
+            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside-dif']}
+                src={Code}
+              />
+            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside-dif']}
+                src={Code}
+              />
+            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside-dif']}
+                src={Code}
+              />
+            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+          </div>
+          <div className={styles['btn-aside']}>
+            <img
+                className={styles['icone-aside']}
+                src={Logout}
+              />
+            <button className={styles['btn-aside-style']} onClick={handleLogout}>Sair</button>
+          </div>
         </div>
       </aside>
 
