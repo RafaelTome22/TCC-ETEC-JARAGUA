@@ -223,9 +223,8 @@ html, body {
 }
 
 .article-body {
-    border: 1px solid red;
     width: 100vw; /* Garante que ocupe toda a largura disponível */
-    height: 500px;
+    height: 575px;
     background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
     display: flex;
     justify-content: center;
@@ -238,10 +237,11 @@ html, body {
     font-family: 'Krona One', sans-serif;
     color: #f0ffffde;
     letter-spacing: 3px;
+    margin-top: 150px;
+    margin-bottom: 100px;
 }
 
 .article-main {
-    border: 1px solid blue;
     width: 100vw;
     height: 400px;
     display: flex;
@@ -337,6 +337,7 @@ pre {
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     color: #333;
+    text-align: justify;
 }
 
 .popup {
@@ -420,5 +421,26 @@ pre {
 }
 
 .article-secundario {
-    margin-top: 100px;
+    border: 1px solid red;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
+}
+
+
+.titulo-article-sec-h1 {
+    margin-top: 80px;
+}
+
+.article-infos-empresa {
+    border: 1px solid black;
+    padding: 2%;
+    width: 1220px;
+    height: 550px;
+    display: flex;
+    gap: 50px;
 }

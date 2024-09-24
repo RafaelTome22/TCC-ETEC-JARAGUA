@@ -147,17 +147,43 @@ function Vitrine() {
           <div className={styles['text-exemp']}>
             <div className={styles['explicacao-exemp-cod']}>
               <h1>Instruções de Uso:</h1>
-              <p className={styles['par-text-exemp']}>Execute o comando 'npm install focos' no terminal de seu editor de código para instalar o focos.</p>
+              <p className={styles['par-text-exemp']}>Execute o comando 'npm install focos' no terminal de seu editor de código para instalar a biblioteca focos.</p>
             </div>
           </div>
         </div>
+      </article>
         <div className={styles["article-secundario"]}>
+          <div clasName={styles['titulo-article-sec']}>
+            <h1 clasName={styles['titulo-article-sec-h1']}>Quem somos</h1>
+          </div>
           <div className={styles['article-infos-empresa']}>
-            <h1 className={styles['titulo-article-infos-empresa']}>Sobre a Focos</h1>
-
+          <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
+            <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
+          </div> {/* fim do container de imagem do conteudo da apresentação */}
+          <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
+            <div className={styles['texto-conteudo-apresentacao-main']}>
+              <h1 className={styles['titulo-container']}>Explore o Digital com Liberdade, <strong>Escolha Focos!</strong></h1>
+              <p className={styles['pag-container']}>“A biblioteca acessível que transforma a experiência de todos os usuários, tornando a web mais inclusiva e intuitiva para desenvolvedores.”</p>
+              <p className={styles['pag-container']}>Adote o Focos agora e desenvolva interfaces que vão além do visual, garantindo acessibilidade e usabilidade para todos. Torne seus projetos mais inclusivos com apenas algumas linhas de código!</p>
+            </div>
+            <div className={styles.link}>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Componentes Focos
+              </button>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Ler mais...
+              </button>
+            </div>
+          </div> {/* fim do container de texto do conteudo da apresentação */}
           </div>
         </div>
-      </article>
+
     </div>
   );
 }
