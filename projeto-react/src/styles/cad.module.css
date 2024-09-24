@@ -218,6 +218,12 @@
     left: 0; 
     transition: background-color 0.3s, height 0.3s; 
   }
+  .passwordHint {
+    color: #9c9a9a;
+    font-size: 0.9rem; 
+    margin-top: 5px; 
+  }
+  
   
  
 
