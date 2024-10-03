@@ -11,7 +11,7 @@ import RecuperaSenha from './PAGES/RecuperaSenha.js';
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Vitrine />} />
+      <Route path="/" element={<RecuperaSenha />} />
       <Route path="/biblioteca" element={<Biblioteca />} />
       <Route path="/componentes" element={<Componentes />} />
       <Route path="/login" element={<SignupPage />} />
