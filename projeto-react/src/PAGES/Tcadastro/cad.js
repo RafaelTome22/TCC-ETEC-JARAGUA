@@ -84,27 +84,33 @@ function SignupPage() {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (!nome || !email || !senha) {
-      alert("Por favor, preencha todos os campos.");
-      return;
+        alert("Por favor, preencha todos os campos.");
+        return;
     }
     if (!validatePassword(senha)) {
-      alert("A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
-      return;
+        alert("A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        return;
     }
     try {
-      const hashedPassword = await hashPassword(senha);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-      await insercao([nome, email, hashedPassword]);
-      setNome('');
-      setEmail('');
-      setPassword('');
-      alert("Bem vindo :)");
-      navigate("/login");
+        // Criação do usuário
+        const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+        const hashedPassword = await hashPassword(senha);
+        await insercao([nome, email, hashedPassword]);
+        
+        setNome('');
+        setEmail('');
+        setPassword('');
+        
+        // Alerta informando que o e-mail de confirmação foi enviado
+        alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
+        
+        navigate("/login");
     } catch (error) {
-      console.error("Erro ao cadastrar:", error);
-      alert("Erro ao cadastrar. Tente novamente.");
+        console.error("Erro ao cadastrar:", error);
+        alert("Erro ao cadastrar. Tente novamente.");
     }
-  };
+};
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
