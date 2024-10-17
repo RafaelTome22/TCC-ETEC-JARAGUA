@@ -43,12 +43,19 @@ function SignupPage() {
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const navigate = useNavigate();
   const { currentUser } = useAuth();
 =======
   const [barColor, setBarColor] = useState('red'); // Cor da barra padrão
   const [barHeight, setBarHeight] = useState('4px'); // Altura padrão da barra
   const [hasAlerted, setHasAlerted] = useState(false); // Estado para controlar o alerta
+=======
+  const [barColor, setBarColor] = useState('red');
+  const [barHeight, setBarHeight] = useState('4px');
+  const [hasAlerted, setHasAlerted] = useState(false);
+  const [showPasswordHint, setShowPasswordHint] = useState(false); 
+>>>>>>> API
   const navigate = useNavigate();
   const location = useLocation();
 >>>>>>> origin/API
@@ -102,14 +109,15 @@ function SignupPage() {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (!nome || !email || !senha) {
-      alert("Por favor, preencha todos os campos.");
-      return;
+        alert("Por favor, preencha todos os campos.");
+        return;
     }
     if (!validatePassword(senha)) {
-      alert("A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
-      return;
+        alert("A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        return;
     }
     try {
+<<<<<<< HEAD
       const hashedPassword = await hashPassword(senha);
       const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
       await insercao([nome, email, hashedPassword]);
@@ -122,11 +130,27 @@ function SignupPage() {
       alert("Bem vindo :)");
       navigate("/login");
 >>>>>>> origin/API
+=======
+        // Criação do usuário
+        const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+        const hashedPassword = await hashPassword(senha);
+        await insercao([nome, email, hashedPassword]);
+        
+        setNome('');
+        setEmail('');
+        setPassword('');
+        
+        // Alerta informando que o e-mail de confirmação foi enviado
+        alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
+        
+        navigate("/login");
+>>>>>>> API
     } catch (error) {
-      console.error("Erro ao cadastrar:", error);
-      alert("Erro ao cadastrar. Tente novamente.");
+        console.error("Erro ao cadastrar:", error);
+        alert("Erro ao cadastrar. Tente novamente.");
     }
-  };
+};
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -163,36 +187,40 @@ function SignupPage() {
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-
-    // Resetar cor e altura da barra
     setBarColor('red');
     setBarHeight('15px');
 
     if (newPassword.length >= 8) {
       if (validatePassword(newPassword)) {
-        setBarColor('green'); // Cor da barra quando a senha é forte
-        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+        setBarColor('green');
+        setBarHeight('15px');
       } else {
-        setBarColor('yellow'); // Cor da barra quando a senha é mediana
-        setBarHeight('15px');  // Aumenta a altura da barra em 5px
+        setBarColor('yellow');
+        setBarHeight('15px');
       }
     } else if (newPassword.length >= 4) {
-      // Se a senha tem pelo menos 4 caracteres e não é válida ainda
-      setBarColor('yellow'); // Cor da barra quando a senha é mediana
-      setBarHeight('15px');  // Aumenta a altura da barra em 5px
+      setBarColor('yellow');
+      setBarHeight('15px');
     } else if (newPassword.length === 0) {
-      // Se a senha estiver vazia, reseta a barra
-      setBarColor('red'); // Cor da barra padrão
-      setBarHeight('9px'); // Altura padrão da barra
+      setBarColor('red');
+      setBarHeight('9px');
     }
   };
 
   const handlePasswordFocus = () => {
+<<<<<<< HEAD
     if (!hasAlerted) {
       alert("Para uma senha segura, digite no mínimo 8 caracteres, incluindo letras maiúsculas, números e caracteres especiais.");
       setHasAlerted(true);
 >>>>>>> origin/API
     }
+=======
+    setShowPasswordHint(true); 
+  };
+
+  const handlePasswordBlur = () => {
+    setShowPasswordHint(false); 
+>>>>>>> API
   };
 
   const handleGoogleLogin = async () => {
@@ -259,13 +287,19 @@ function SignupPage() {
 =======
             onChange={handlePasswordChange}
             onFocus={handlePasswordFocus}
+            onBlur={handlePasswordBlur} 
             className={styles.input}
           />
+          {showPasswordHint && ( 
+            <div className={styles.passwordHint}>
+              Para uma senha segura, digite no mínimo 8 caracteres, incluindo letras maiúsculas, números e caracteres especiais.
+            </div>
+          )}
           <div className={styles.barsContainer}>
             <div 
               className={styles.bar} 
               style={{ backgroundColor: barColor, height: barHeight }} >
-              </div>
+            </div>
           </div>
 >>>>>>> origin/API
           <button type='submit' className={styles.button}>Cadastrar</button>

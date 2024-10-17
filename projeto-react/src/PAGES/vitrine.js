@@ -6,6 +6,7 @@ import logo from '../assets/logo.png';
 import lupa from '../assets/lupa.png';
 import copy from '../assets/documento.png';
 import userIcon from '../assets/user.png'; // Um ícone de usuário para quando o user estiver logado
+import logoSite from '../assets/logoSite.png'
 
 function Vitrine() {
   const navigate = useNavigate();
@@ -85,14 +86,50 @@ function Vitrine() {
             </div>
           ) : (
             <>
-              <button title="Cadastre-se" className={styles['btn-form-log']}>Cadastre-se</button>
-              <button title="Login" className={styles['btn-form-log']} onClick={handleLogin}>Login</button>
+              <div className={styles.link}>
+                <button
+                  onClick={() => navigate('/login')}
+                  className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+                >
+                  Login
+                </button>
+              </div>
             </>
           )}
         </div> {/* Fim do header botões de login e cadastro */}
       </header> {/* Fim do header */}
 
+      <div className={styles['apresentacao']}> {/* inicio do container de apresentação */}
+        <div className={styles['conteudo-apresentacao']}> {/* inicio do container de conteudo da apresentação */}
+          <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
+            <div className={styles['texto-conteudo-apresentacao-main']}>
+              <h1 className={styles['titulo-container']}>Explore o Digital com Liberdade, <strong>Escolha Focos!</strong></h1>
+              <p className={styles['pag-container']}>“A biblioteca acessível que transforma a experiência de todos os usuários, tornando a web mais inclusiva e intuitiva para desenvolvedores.”</p>
+              <p className={styles['pag-container']}>Adote o Focos agora e desenvolva interfaces que vão além do visual, garantindo acessibilidade e usabilidade para todos. Torne seus projetos mais inclusivos com apenas algumas linhas de código!</p>
+            </div>
+            <div className={styles.link}>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Componentes Focos
+              </button>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Ler mais...
+              </button>
+            </div>
+          </div> {/* fim do container de texto do conteudo da apresentação */}
+          <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
+            <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
+          </div> {/* fim do container de imagem do conteudo da apresentação */}
+        </div> {/* fim do container de conteudo da apresentação */}
+      </div> {/* fim do container de apresentação */}
+
       <article className={styles['article-body']}>
+      <h1 className={styles['titulo-article-body']}>Os Primeiros Passos para uma Web mais Inclusiva!</h1>
         <div className={styles['article-main']}>
           <div className={styles['exemp-cod']}>
             <div className={styles['text-exemp-cod']}>
@@ -109,16 +146,43 @@ function Vitrine() {
           </div>
           <div className={styles['text-exemp']}>
             <div className={styles['explicacao-exemp-cod']}>
-              <h1>Sobre</h1>
+              <h1>Instruções de Uso:</h1>
+              <p className={styles['par-text-exemp']}>Execute o comando 'npm install focos' no terminal de seu editor de código para instalar a biblioteca focos.</p>
             </div>
           </div>
         </div>
-        <div className="article-secundario">
-          <button className={'teste'} onClick={() => navigate('/biblioteca')}>opa</button>
-        </div>
       </article>
+        <div className={styles["article-secundario"]}>
+          <div className={styles['article-infos-empresa']}>
+          <div className={styles['image-conteudo-apresentacao']}> {/* inicio do container de imagem do conteudo da apresentação */}
+            <img className={styles.logoSite} src={logoSite} alt="logo da empresa focos" />
+          </div> {/* fim do container de imagem do conteudo da apresentação */}
+          <div className={styles['texto-conteudo-apresentacao']}> {/* inicio do container de texto do conteudo da apresentação */}
+            <div className={styles['texto-conteudo-apresentacao-main']}>
+              <h1 className={styles['titulo-container']}>Quem Somos?</h1>
+              <p className={styles['pag-container']}>“A Focos é uma empresa inovadora, especializada no desenvolvimento de soluções de front-end acessíveis. Com uma abordagem centrada na inclusão digital, a Focos oferece uma biblioteca de componentes projetados para garantir conformidade com as diretrizes WCAG, proporcionando interfaces web que são acessíveis para todos os usuários, independentemente de suas limitações. Nossa missão é capacitar desenvolvedores a criar projetos inclusivos e acessíveis desde o início, garantindo uma navegação fluida e uma experiência otimizada para todos."</p>
+            </div>
+            <div className={styles.link}>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Componentes Focos
+              </button>
+              <button
+                onClick={() => navigate('/biblioteca')}
+                className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
+              >
+                Ler mais...
+              </button>
+            </div>
+          </div> {/* fim do container de texto do conteudo da apresentação */}
+          </div>
+        </div>
+
     </div>
   );
 }
 
 export default Vitrine;
+
