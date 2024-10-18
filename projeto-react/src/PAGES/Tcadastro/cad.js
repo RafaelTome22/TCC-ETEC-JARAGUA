@@ -2,20 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-<<<<<<< HEAD
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, googleProvider } from '../../BD/firebase';
-import bcrypt from 'bcryptjs';
-import { useNavigate } from 'react-router-dom';
-import { insercao } from '../../services/funcaoBD';
-import { useAuth } from '../../AuthContext';
-=======
+
 import bcrypt from 'bcryptjs';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../BD/firebase';
 import { insercao } from '../../services/funcaoBD';
->>>>>>> origin/API
+
 import styles from '../../styles/cad.module.css';
 
 library.add(fab);
@@ -42,23 +35,10 @@ function SignupPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   const navigate = useNavigate();
   const { currentUser } = useAuth();
-=======
-  const [barColor, setBarColor] = useState('red'); // Cor da barra padrão
-  const [barHeight, setBarHeight] = useState('4px'); // Altura padrão da barra
-  const [hasAlerted, setHasAlerted] = useState(false); // Estado para controlar o alerta
-=======
-  const [barColor, setBarColor] = useState('red');
-  const [barHeight, setBarHeight] = useState('4px');
-  const [hasAlerted, setHasAlerted] = useState(false);
-  const [showPasswordHint, setShowPasswordHint] = useState(false); 
->>>>>>> API
-  const navigate = useNavigate();
   const location = useLocation();
->>>>>>> origin/API
 
   useEffect(() => {
     document.body.style.backgroundColor = '#c9d6ff';
@@ -83,13 +63,9 @@ function SignupPage() {
   }, []);
 
   useEffect(() => {
-<<<<<<< HEAD
-    const globalStyles = `
-      * {
-=======
+
     const globalStyles = `*
       {
->>>>>>> origin/API
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -117,20 +93,6 @@ function SignupPage() {
         return;
     }
     try {
-<<<<<<< HEAD
-      const hashedPassword = await hashPassword(senha);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-      await insercao([nome, email, hashedPassword]);
-      setNome('');
-      setEmail('');
-      setPassword('');
-<<<<<<< HEAD
-      navigate("/home");
-=======
-      alert("Bem vindo :)");
-      navigate("/login");
->>>>>>> origin/API
-=======
         // Criação do usuário
         const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
         const hashedPassword = await hashPassword(senha);
@@ -144,7 +106,7 @@ function SignupPage() {
         alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
         
         navigate("/login");
->>>>>>> API
+
     } catch (error) {
         console.error("Erro ao cadastrar:", error);
         alert("Erro ao cadastrar. Tente novamente.");
@@ -160,12 +122,6 @@ function SignupPage() {
     }
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginSenha);
-<<<<<<< HEAD
-      navigate("/home");
-    } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      alert("Erro ao fazer login. Verifique suas credenciais e tente novamente.");
-=======
       const from = location.state?.from || '/';
       navigate(from, { replace: true });
     } catch (error) {
