@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-
 import bcrypt from 'bcryptjs';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../BD/firebase';
 import { insercao } from '../../services/funcaoBD';
-
 import styles from '../../styles/cad.module.css';
 
 library.add(fab);
@@ -35,9 +33,11 @@ function SignupPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginSenha, setLoginSenha] = useState("");
   const [isActive, setIsActive] = useState(false);
-
+  const [barColor, setBarColor] = useState('red');
+  const [barHeight, setBarHeight] = useState('4px');
+  const [hasAlerted, setHasAlerted] = useState(false);
+  const [showPasswordHint, setShowPasswordHint] = useState(false); 
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
   const location = useLocation();
 
   useEffect(() => {
@@ -63,7 +63,6 @@ function SignupPage() {
   }, []);
 
   useEffect(() => {
-
     const globalStyles = `*
       {
         margin: 0;
@@ -106,7 +105,6 @@ function SignupPage() {
         alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
         
         navigate("/login");
-
     } catch (error) {
         console.error("Erro ao cadastrar:", error);
         alert("Erro ao cadastrar. Tente novamente.");
@@ -164,35 +162,12 @@ function SignupPage() {
   };
 
   const handlePasswordFocus = () => {
-<<<<<<< HEAD
-    if (!hasAlerted) {
-      alert("Para uma senha segura, digite no mínimo 8 caracteres, incluindo letras maiúsculas, números e caracteres especiais.");
-      setHasAlerted(true);
->>>>>>> origin/API
-    }
-=======
     setShowPasswordHint(true); 
   };
 
   const handlePasswordBlur = () => {
     setShowPasswordHint(false); 
->>>>>>> API
   };
-
-  const handleGoogleLogin = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/home");
-    } catch (error) {
-      console.error("Erro ao fazer login com Google:", error);
-      alert("Erro ao fazer login com Google. Tente novamente.");
-    }
-  };
-
-  if (currentUser) {
-    navigate("/home");
-    return null;
-  }
 
   return (
     <div className={`${styles.container} ${isActive ? styles.active : ''}`} id='container'>
@@ -202,19 +177,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-<<<<<<< HEAD
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'github']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
-=======
               Continue com sua conta Google
->>>>>>> origin/API
             </a>
           </div>
           <span>Use seu Email e Senha</span>
@@ -236,11 +199,6 @@ function SignupPage() {
             type='password'
             value={senha}
             placeholder='Senha'
-<<<<<<< HEAD
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-          />
-=======
             onChange={handlePasswordChange}
             onFocus={handlePasswordFocus}
             onBlur={handlePasswordBlur} 
@@ -257,7 +215,6 @@ function SignupPage() {
               style={{ backgroundColor: barColor, height: barHeight }} >
             </div>
           </div>
->>>>>>> origin/API
           <button type='submit' className={styles.button}>Cadastrar</button>
         </form>
       </div>
@@ -268,19 +225,7 @@ function SignupPage() {
           <div className={styles.socialIcons}>
             <a href='#' className={styles.icon} onClick={handleGoogleLogin}>
               <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-<<<<<<< HEAD
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'github']} />
-            </a>
-            <a href='#' className={styles.icon}>
-              <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
-=======
               Continue com a sua conta Google
->>>>>>> origin/API
             </a>
           </div>
           <span>Ou use seu Email e Senha</span>
@@ -298,11 +243,7 @@ function SignupPage() {
             onChange={(e) => setLoginSenha(e.target.value)}
             className={styles.input}
           />
-<<<<<<< HEAD
-          <a href='PasswordReset'>Esqueceu sua senha?</a>
-=======
           <a href='PasswordReset' className={styles.aPass}>Esqueceu sua senha?</a>
->>>>>>> origin/API
           <button type='submit' className={styles.button}>Login</button>
         </form>
       </div>
@@ -326,7 +267,3 @@ function SignupPage() {
 }
 
 export default SignupPage;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/API
