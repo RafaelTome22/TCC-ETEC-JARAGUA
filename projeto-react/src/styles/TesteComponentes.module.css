@@ -7,14 +7,14 @@
 
 .teste-componente-root {
     padding: 20px;
-    background-color: #f9f9f9;
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
     border: 1px solid #ddd;
     border-radius: 8px;
   }
   
   .code-block {
     font-family: monospace;
-    background-color: #eaeaea;
+    background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
     padding: 16px;
     border-radius: 4px;
     margin-bottom: 20px;

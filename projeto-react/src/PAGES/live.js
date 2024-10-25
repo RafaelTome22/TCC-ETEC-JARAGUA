@@ -7,7 +7,7 @@ function Live() {
 
     const handleButtonClick = () => {
       setIsClicked(true);
-      alert('Você clicou no botão acessível!');
+      alert('Você clicou em mim!');
     };
   
     return (
@@ -34,7 +34,7 @@ function Live() {
   
         {/* Botão para Teste */}
         <div className={styles['button-container']}>
-          <AccessibleButton label="Teste o AccessibleButton" onClick={handleButtonClick} />
+          <AccessibleButton label="Clique em mim" onClick={handleButtonClick} />
         </div>
   
         {isClicked && <p className={styles['feedback-text']}>O botão foi clicado!</p>}
