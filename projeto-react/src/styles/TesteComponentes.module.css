@@ -1,3 +1,10 @@
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ddd;
+}
+
 .teste-componente-root {
     padding: 20px;
     background-color: #f9f9f9;
