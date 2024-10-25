@@ -202,6 +202,9 @@ const App = () => {
 export default App;
 `}
                 </pre>
+               <br></br>
+                <button onClick={() => navigate('/teste-componente')}>
+                  Teste o componente</button>
                 <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef1)}>
                   <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
                 </button>

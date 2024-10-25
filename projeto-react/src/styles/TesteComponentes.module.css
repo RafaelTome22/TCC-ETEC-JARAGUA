@@ -1,0 +1,25 @@
+.teste-componente-root {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .code-block {
+    font-family: monospace;
+    background-color: #eaeaea;
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  .feedback-text {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
