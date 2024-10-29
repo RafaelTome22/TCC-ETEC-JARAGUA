@@ -12,10 +12,11 @@ import Live from './PAGES/live.js'
 function RoutesApp() {
   return (
     <Routes>
-      <Route path="/" element={<Live />} />
+      <Route path="/" element={<Componentes  />} />
       <Route path="/biblioteca" element={<Biblioteca />} />
       <Route path="/componentes" element={<Componentes />} />
       <Route path="/login" element={<SignupPage />} />
+      <Route path="/teste-componente" element={<Live />} />
       <Route path="/PasswordReset" element={<RecuperaSenha/>} />
     </Routes>
   );
