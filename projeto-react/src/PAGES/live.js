@@ -12,7 +12,7 @@ function AcesssibleButton() {
     <AccessibleButton label="Clique em mim" onClick={handleClick} />
   );
 }
-  /* Esta é apenas uma função de teste, não representa o componente real */ 
+  
 `;
 
     return (

@@ -109,7 +109,7 @@ function Vitrine() {
             </div>
             <div className={styles.link}>
               <button
-                onClick={() => navigate('/biblioteca')}
+                onClick={() => navigate('/componentes')}
                 className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}
               >
                 Componentes Focos

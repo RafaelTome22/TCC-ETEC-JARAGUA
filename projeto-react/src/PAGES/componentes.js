@@ -164,10 +164,7 @@ function Componentes() {
       </aside>
 
       <section className={styles['container-sessao']}> {/* Conteúdo principal */}
-        <div className={styles['titulo-container-sessao']}>
-          <h1>Documentação</h1>
-          <p>A biblioteca Focos é projetada para facilitar a criação de componentes de interface de usuário acessíveis...</p>
-        </div>
+        
 
         <div className={styles['componentes']}>
           <h2 id='componentes'><u>Componentes:</u></h2>
@@ -203,7 +200,7 @@ export default App;
 `}
                 </pre>
                <br></br>
-                <button onClick={() => navigate('/teste-componente')}>
+                <button onClick={() => navigate('/teste-componente')} className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}>
                   Teste o componente</button>
                 <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef1)}>
                   <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
