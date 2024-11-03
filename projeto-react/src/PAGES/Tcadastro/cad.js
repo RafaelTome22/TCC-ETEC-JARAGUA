@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import bcrypt from 'bcryptjs';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, sendEmailVerification, updateProfile } from 'firebase/auth';
 import { auth, googleProvider } from '../../BD/firebase';
 import { insercao } from '../../services/funcaoBD';
 import styles from '../../styles/cad.module.css';
@@ -35,7 +35,6 @@ function SignupPage() {
   const [isActive, setIsActive] = useState(false);
   const [barColor, setBarColor] = useState('red');
   const [barHeight, setBarHeight] = useState('4px');
-  const [hasAlerted, setHasAlerted] = useState(false);
   const [showPasswordHint, setShowPasswordHint] = useState(false); 
   const navigate = useNavigate();
   const location = useLocation();
@@ -92,8 +91,17 @@ function SignupPage() {
         return;
     }
     try {
-        // Criação do usuário
         const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+        const user = userCredential.user;
+
+        // Atualiza o nome do usuário no Firebase Auth
+        await updateProfile(user, {
+          displayName: nome
+        });
+
+        await sendEmailVerification(user);
+        alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
+
         const hashedPassword = await hashPassword(senha);
         await insercao([nome, email, hashedPassword]);
         
@@ -101,16 +109,12 @@ function SignupPage() {
         setEmail('');
         setPassword('');
         
-        // Alerta informando que o e-mail de confirmação foi enviado
-        alert("Bem-vindo! Uma mensagem de confirmação foi enviada para seu e-mail.");
-        
         navigate("/login");
     } catch (error) {
         console.error("Erro ao cadastrar:", error);
         alert("Erro ao cadastrar. Tente novamente.");
     }
-};
-
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -252,13 +256,23 @@ function SignupPage() {
         <div className={styles.toggle}>
           <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
             <h1>Bem-vindo!</h1>
-            <p>Entre com a sua conta para desfrutar de todos os recursos do site.</p>
-            <button id='login' onClick={() => setIsActive(false)} className={styles.button}>Login</button>
+            <p>Entre com suas informações pessoais</p>
+            <button
+              className={styles.button}
+              onClick={() => setIsActive(false)}
+            >
+              Entrar
+            </button>
           </div>
           <div className={`${styles.togglePanel} ${styles.toggleRight}`}>
-            <h1>Olá, visitante!</h1>
-            <p>Registre-se com seus dados pessoais para desfrutar de todos os recursos do site.</p>
-            <button id='register' onClick={() => setIsActive(true)} className={styles.button}>Cadastre-se</button>
+            <h1>Olá, Amigo!</h1>
+            <p>Cadastre-se para começar sua jornada!</p>
+            <button
+              className={styles.button}
+              onClick={() => setIsActive(true)}
+            >
+              Cadastre-se
+            </button>
           </div>
         </div>
       </div>
