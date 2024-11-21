@@ -55,7 +55,7 @@ function Componentes() {
   return (
     <div className={styles['all']}>
       <header className={styles['header-main']}> {/* Header */}
-        <div className={styles['header-info']}> {/* Logo e nome da empresa */}
+        <div className={styles['header-info']} onClick={() => navigate('/')}  > {/* Logo e nome da empresa */}
           <img className={styles.logo} src={logo} alt="logo da empresa focos" />
           <p className={styles['nome-empresa']}>Focos</p>
         </div>
@@ -107,23 +107,24 @@ function Componentes() {
                 className={styles['icone-aside']}
                 src={Home}
               />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/')}>home</button>
+            <button className={styles['btn-aside-style']} onClick={() => navigate('/')}>Home</button>
           </div>
-          <div className={styles['btn-aside']}>
+          <div className={styles['btn-aside']} onClick={() => navigate('/biblioteca')}>
             <img
                 className={styles['icone-aside']}
                 src={documentacao}
                 
               />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Documentação</button>
+            <button className={styles['btn-aside-style']} >Documentação</button>
           </div>
           <div className={styles['btn-aside']}>
             <img
                 className={styles['icone-aside']}
                 src={componentes}
+                onClick={() => navigate('/componentes')}
                 
               />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Componentes</button>
+            <button className={styles['btn-aside-style']} >Componente</button>
           </div>
           <div className={styles['btn-aside']}>
             <img

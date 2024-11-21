@@ -21,7 +21,10 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
+body {
 
+    
+}
 .all {
     width: 100vw;
     height: auto;
@@ -29,6 +32,7 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(90deg, rgba(72,93,204,1) 41%, rgba(40,52,114,1) 100%);
+    
 }
 
 .header-main {
@@ -42,6 +46,7 @@
     z-index: 1;
     background-color: #fff;
     border-radius: 8px;
+    
 }
 
 .header-info {
@@ -49,6 +54,7 @@
     width: 29%;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
 }
 
 .logo {
@@ -240,6 +246,7 @@
 /* Suave animação ao rolar */
 .container-sessao {
     scroll-behavior: smooth;
+    width: 80%;
 }
 
 /* Estilos para o conteúdo do texto */
@@ -283,12 +290,14 @@
     color: #fefefe;
     font-family: 'Krona One', sans-serif;
     margin-bottom: 0px;
+    
 }
 
 .container-componentes {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .conteudo-texto {
@@ -426,6 +435,7 @@ pre {
     background-color: rgba(72,93,204,1);
     color: #ffffff;
     cursor: pointer;
+    margin-right: 30px;
 }
 
 .btn-white:hover {

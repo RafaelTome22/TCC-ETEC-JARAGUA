@@ -55,7 +55,7 @@ function Biblioteca() {
   return (
     <div className={styles['all']}>
       <header className={styles['header-main']}> {/* Header */}
-        <div className={styles['header-info']}> {/* Logo e nome da empresa */}
+        <div className={styles['header-info']} onClick={() => navigate('/')}> {/* Logo e nome da empresa */}
           <img className={styles.logo} src={logo} alt="logo da empresa focos" />
           <p className={styles['nome-empresa']}>Focos</p>
         </div>
@@ -117,13 +117,13 @@ function Biblioteca() {
               />
             <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Documentação</button>
           </div>
-          <div className={styles['btn-aside']}>
+          <div className={styles['btn-aside']} onClick={() => navigate('/componentes')}>
             <img
                 className={styles['icone-aside']}
                 src={componentes}
                 
               />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/componentes')}>Componentes</button>
+            <button className={styles['btn-aside-style']}>Componentes</button>
           </div>
           <div className={styles['btn-aside']}>
             <img
