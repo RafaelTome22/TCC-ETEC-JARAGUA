@@ -41,6 +41,10 @@ function Componentes() {
     }
   };
 
+  const handleConfig = () => {
+    navigate('/configurações');
+  }
+
   function copyCode(ref) {
     const codeElement = ref.current;
     const tempInput = document.createElement('textarea');
@@ -81,7 +85,7 @@ function Componentes() {
               {isPopupOpen && (
                 <div className={styles.popup}> {/* Pop-up com as informações do usuário */}
                   <p>Olá, {currentUser.displayName || 'Usuário'}</p>
-                  <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+                  <button onClick={handleConfig} className={styles['btn-form-log']}>configurações</button>
                 </div>
               )}
             </div>
