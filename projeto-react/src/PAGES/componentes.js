@@ -18,6 +18,8 @@ import { useAuth } from '../context/authContext'; // Importa o contexto de auten
 function Componentes() {
   const codeRef1 = useRef(null);
   const codeRef2 = useRef(null);
+  const codeRef3 = useRef(null);
+  const codeRef4 = useRef(null);
 
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth(); // Obtém o usuário atual e a função de logout
@@ -214,6 +216,8 @@ export default App;
             </div>
           </div>
 
+          
+
           <div className={styles['container-componentes-1']}>
             <div className={styles['conteudo-texto']}>
               <h4 className={styles['title-componente']}>AccessibleInput</h4>
@@ -260,12 +264,194 @@ function PaginaExemplo() {
 export default PaginaExemplo;
 `}
                 </pre>
+                <br></br>
+                <button onClick={() => navigate('/teste-componente')} className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}>
+                  Teste o componente</button>
                 <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef2)}>
                   <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
                 </button>
               </div>
             </div>
           </div>
+
+          <div className={styles['container-componentes-2']}>
+            <div className={styles['conteudo-texto']}>
+              <h4 className={styles['title-componente']}>AccessibleColorPicker</h4>
+              <p className={styles['par-1']}>Um componente para selecionar cores com suporte à acessibilidade...</p>
+              <p className={styles['par-2']}>
+                Atributos:  <br/><br/>
+                - id (string): Identificador exclusivo para o campo de entrada...<br />
+                - label (string): Texto descritivo para o campo...
+              </p>
+            </div>
+            <div className={styles['text-exemp-cod-1']}>
+              <h1 className={styles['title-codigo']}>Exemplo de código: AccessibleColorPicker</h1>
+              <div className={styles['code-container']}>
+                <pre ref={codeRef2} id="code2">
+                  {`import React, { useState } from 'react';
+import { AccessibleColorPicker } from 'focos'; // Importe o componente da biblioteca Focos
+
+const ColorSelector = () => {
+  const [color, setColor] = useState('#000000');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(Cor selecionada: \${color});
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
+      <h1>Selecione uma Cor</h1>
+      <AccessibleColorPicker
+        id="color"
+        label="Escolha uma cor"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+        ariaDescribedBy="colorHelp"
+      />
+      <small id="colorHelp" style={{ display: 'block', marginTop: '5px' }}>
+        Clique no seletor para escolher uma cor.
+      </small>
+      <button type="submit" style={{ marginTop: '20px', padding: '10px 20px' }}>
+        Submeter
+      </button>
+    </form>
+  );
+};
+
+export default ColorSelector;
+`}
+                </pre>
+                <br></br>
+                <button onClick={() => navigate('/teste-componente2')} className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}>
+                  Teste o componente</button>
+                <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef2)}>
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles['container-componentes-3']}>
+            <div className={styles['conteudo-texto']}>
+              <h4 className={styles['title-componente']}>AccessibleDateInput</h4>
+              <p className={styles['par-1']}>Um componente de entrada para datas com suporte à acessibilidade...</p>
+              <p className={styles['par-2']}>
+                Atributos:  <br/><br/>
+                - id (string): Identificador exclusivo para o campo de entrada...<br />
+                - label (string): Texto descritivo para o campo...
+              </p>
+            </div>
+            <div className={styles['text-exemp-cod-1']}>
+              <h1 className={styles['title-codigo']}>Exemplo de código: AccessibleDateInput</h1>
+              <div className={styles['code-container']}>
+                <pre ref={codeRef3} id="code3">
+                  {`import React, { useState } from 'react';
+import { AccessibleDateInput } from 'focos';
+
+const DateForm = () => {
+  const [date, setDate] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(Data selecionada: \${date || 'Nenhuma data escolhida'});
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
+      <h1>Selecione uma Data</h1>
+      <AccessibleDateInput
+        id="date"
+        label="Escolha uma data"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        ariaDescribedBy="dateHelp"
+      />
+      <small id="dateHelp" style={{ display: 'block', marginTop: '5px' }}>
+        Formato aceito: AAAA-MM-DD.
+      </small>
+      <button type="submit" style={{ marginTop: '20px', padding: '10px 20px' }}>
+        Submeter
+      </button>
+    </form>
+  );
+};
+
+export default DateForm;
+`}
+                </pre>
+                <br></br>
+                <button onClick={() => navigate('/teste-componente3')} className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}>
+                  Teste o componente</button>
+                <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef3)}>
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles['container-componentes-4']}>
+            <div className={styles['conteudo-texto']}>
+              <h4 className={styles['title-componente']}>AccessibleRangeInput</h4>
+              <p className={styles['par-1']}>Um componente de controle deslizante para ajustar valores em um intervalo.
+              Vantagens...</p>
+              <p className={styles['par-2']}>
+                Atributos:  <br/><br/>
+                - id (string): Identificador exclusivo para o campo de entrada...<br />
+                - label (string): Texto descritivo para o campo...
+              </p>
+            </div>
+            <div className={styles['text-exemp-cod-1']}>
+              <h1 className={styles['title-codigo']}>Exemplo de código: AccessibleRangeInput</h1>
+              <div className={styles['code-container']}>
+                <pre ref={codeRef4} id="code4">
+                  {`import React, { useState } from 'react';
+import { AccessibleRangeInput } from 'focos';
+
+const VolumeControl = () => {
+  const [volume, setVolume] = useState(50);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(Volume selecionado: \${volume});
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
+      <h1>Controle de Volume</h1>
+      <AccessibleRangeInput
+        id="volume"
+        label="Ajuste o volume"
+        value={volume}
+        onChange={(e) => setVolume(e.target.value)}
+        min={0}
+        max={100}
+        step={1}
+        ariaDescribedBy="volumeHelp"
+      />
+      <small id="volumeHelp" style={{ display: 'block', marginTop: '5px' }}>
+        Arraste o controle para ajustar o volume (0-100).
+      </small>
+      <button type="submit" style={{ marginTop: '20px', padding: '10px 20px' }}>
+        Salvar Configuração
+      </button>
+    </form>
+  );
+};
+
+export default VolumeControl;
+`}
+                </pre>
+                <br></br>
+                <button onClick={() => navigate('/teste-componente4')} className={`${styles.btn} ${styles['btn-white']} ${styles.animate}`}>
+                  Teste o componente</button>
+                <button className={styles["btn-copy"]} onClick={() => copyCode(codeRef4)}>
+                  <img className={styles['icon-copy']} src={copy} alt="ícone de cópia" />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
