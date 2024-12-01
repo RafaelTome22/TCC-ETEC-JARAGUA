@@ -156,6 +156,50 @@ body {
     transition: transform 0.3s ease, opacity 0.3s ease; /* Transição suave */
 }
 
+.btn-aside {
+    position: relative; /* Necessário para posicionar o submenu */
+  }
+  
+  .submenu {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Posiciona o submenu abaixo do botão */
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: block; /* Sempre visível enquanto o estado estiver true */
+  }
+  
+  .submenu .btn-aside {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+  }
+  
+  .submenu .btn-aside:last-child {
+    border-bottom: none;
+  }
+  
+  .submenu .btn-aside:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .submenu .icone-aside-dif {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  .seta {
+    width: 15px;
+  }
+
 /* Animação aside */
 @keyframes slideInLeft {
     0% {
@@ -205,6 +249,10 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
+.btn-aside:last-child {
+    margin-top: auto; /* Garante que o botão "Sair" fique na parte inferior */
+  }
 
 /* Estilos para o container-sessao */
 .container-sessao {

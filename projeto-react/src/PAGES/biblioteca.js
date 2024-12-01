@@ -10,6 +10,8 @@ import documentacao from '../assets/documentacao.png'; // Ícone de documentaç�
 import componentes from '../assets/componentes.png'; // Ícone de componentes
 import Code from '../assets/code.png'; // Ícone de código
 import Home from '../assets/home.png'; // Ícone de home
+import direita from '../assets/direita.png'; // Ícone de seta para a direita
+import baixo from '../assets/baixo.png'; // Ícone de seta para a direita
 
 
 import { useAuth } from '../context/authContext'; // Importa o contexto de autenticação
@@ -44,6 +46,18 @@ function Biblioteca() {
   const handleConfig = () => {
     navigate('/configurações');
   }
+
+  const [isSubmenuVisible, setIsSubmenuVisible] = useState(false);
+
+  // Função para controlar a visibilidade do submenu
+  const toggleSubmenu = () => {
+    setIsSubmenuVisible(!isSubmenuVisible); // Alterna a visibilidade do submenu
+  };
+
+  // Função para navegar para a página de Componentes
+  const navigateToComponentes = () => {
+    navigate('/componentes');
+  };
 
   function copyCode(ref) {
     const codeElement = ref.current;
@@ -104,69 +118,71 @@ function Biblioteca() {
         </div>
       </header>
 
-      <aside className={styles.aside}> {/* Sidebar */}
-        <div className={styles['conteudo-asise']}>
+      <aside className={styles.aside}>
+      <div className={styles['conteudo-asise']}>
         <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside']}
-                src={Home}
-              />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/')}>home</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside']}
-                src={documentacao}
-                
-              />
-            <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Documentação</button>
-          </div>
-          <div className={styles['btn-aside']} onClick={() => navigate('/componentes')}>
-            <img
-                className={styles['icone-aside']}
-                src={componentes}
-                
-              />
-            <button className={styles['btn-aside-style']}>Componentes</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside-dif']}
-                src={Code}
-              />
-            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside-dif']}
-                src={Code}
-              />
-            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside-dif']}
-                src={Code}
-              />
-            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside-dif']}
-                src={Code}
-              />
-            <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
-          </div>
-          <div className={styles['btn-aside']}>
-            <img
-                className={styles['icone-aside']}
-                src={Logout}
-              />
-            <button className={styles['btn-aside-style']} onClick={handleLogout}>Sair</button>
-          </div>
+          <img className={styles['icone-aside']} src={Home} />
+          <button className={styles['btn-aside-style']} onClick={() => navigate('/')}>Home</button>
         </div>
-      </aside>
 
+        <div className={styles['btn-aside']}>
+          <img className={styles['icone-aside']} src={documentacao} />
+          <button className={styles['btn-aside-style']} onClick={() => navigate('/biblioteca')}>Documentação</button>
+        </div>
+
+        {/* Componente "Componentes" com submenu e seta */}
+        <div className={styles['btn-aside']}>
+          <img className={styles['icone-aside']} src={componentes} />
+          
+          {/* Botão "Componentes" */}
+          <button
+            className={styles['btn-aside-style']}
+            onClick={navigateToComponentes}  // Navega para a página "Componentes"
+          >
+            Componentes
+          </button>
+
+          {/* Seta para alternar a visibilidade do submenu */}
+          <button
+            className={styles['btn-aside-style']}
+            onClick={toggleSubmenu}  // Alterna o submenu
+          >
+            <img src={isSubmenuVisible ? baixo : direita} alt="seta" className={styles['seta']}/>
+          </button>
+
+          {/* Submenu (Lista de itens) */}
+          {isSubmenuVisible && (
+            <ul className={styles['submenu']}>
+              <li className={styles['btn-aside']}>
+                <img className={styles['icone-aside-dif']} src={Code} />
+                <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+              </li>
+
+              <li className={styles['btn-aside']}>
+                <img className={styles['icone-aside-dif']} src={Code} />
+                <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+              </li>
+
+              <li className={styles['btn-aside']}>
+                <img className={styles['icone-aside-dif']} src={Code} />
+                <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+              </li>
+
+              <li className={styles['btn-aside']}>
+                <img className={styles['icone-aside-dif']} src={Code} />
+                <button className={styles['btn-aside-style-dif']} onClick={() => navigate('/biblioteca')}>Em Desenvolvimento...</button>
+              </li>
+            </ul>
+          )}
+        </div>
+
+        <div className={styles['btn-aside']}>
+          <img className={styles['icone-aside']} src={Logout} />
+          <button className={styles['btn-aside-style']} onClick={handleLogout}>Sair</button>
+        </div>
+      </div>
+    </aside>
+    
       <section className={styles['container-sessao']}> {/* Conteúdo principal */}
         <div className={styles['titulo-container-sessao']}>
           <h1>Documentação</h1>
