@@ -343,6 +343,31 @@
     align-items: center;
     justify-content: space-between;
     
+    
+}
+
+.container-componentes-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+.container-componentes-3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+.container-componentes-4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
 }
 
 .conteudo-texto {
