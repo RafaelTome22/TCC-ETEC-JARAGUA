@@ -60,3 +60,170 @@ body {
 .icone {
     width: 37.5rem;
 }
+
+
+  
+  /* Tablets (portrait & landscape, up to 1024px) */
+  @media (max-width: 1024px) {
+    .container {
+        padding: 2%;
+        background-color: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 50rem;
+    }
+    
+    .header-info {
+        display: flex;
+        width: 29%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+    
+    .nome-empresa {
+        margin-left: 3%;
+        font-size: 1.375rem;
+        font-family: "Secular One", sans-serif;
+        color: #735ff0;
+    }
+    
+    .fot {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .titulo-txt {
+        font-size: 1.3rem;
+        font-family: "Montserrat";
+        color: #735ff0;
+    }
+    
+    .titulo-p {
+        font-size: 1.2rem;
+        font-family: "Montserrat";
+        color: #7D7D7D;
+    }
+    
+    .icone {
+        width: 25rem;
+    }
+  }
+  
+  /* tablet (up to 768px) */
+  @media (max-width: 768px) {
+    .container {
+        padding: 4%;
+        background-color: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 40rem;
+        height: 40rem;
+    }
+    
+    .header-info {
+        display: flex;
+        width: 29%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+    
+    .nome-empresa {
+        margin-left: 3%;
+        font-size: 1.375rem;
+        font-family: "Secular One", sans-serif;
+        color: #735ff0;
+  
+    }
+    
+    .fot {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .titulo-txt {
+        margin-top: 2rem;
+        font-size: 2.0625rem;
+        font-family: "Montserrat";
+        color: #735ff0;
+    }
+    
+    .titulo-p {
+        font-size: 1.75rem;
+        font-family: "Montserrat";
+        color: #7D7D7D;
+    }
+    
+    .icone {
+        width: 37rem;
+        margin-right: 10rem;
+    }
+  }
+  
+  /* Small mobile screens (up to 480px) */
+  @media (max-width: 480px) {
+    .container {
+        padding: 4%;
+        background-color: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 25rem;
+        height: 40rem;
+    }
+    
+    .header-info {
+        display: flex;
+        width: 29%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+    
+    .nome-empresa {
+        margin-left: 3%;
+        font-size: 1.375rem;
+        font-family: "Secular One", sans-serif;
+        color: #735ff0;
+  
+    }
+    
+    .fot {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .titulo-txt {
+        margin-top: 5rem;
+        font-size: 1.7rem;
+        font-family: "Montserrat";
+        color: #735ff0;
+    }
+    
+    .titulo-p {
+        font-size: 1.2rem;
+        font-family: "Montserrat";
+        color: #7D7D7D;
+    }
+    
+    .icone {
+        width: 28rem;
+        margin-left: 3rem;
+    }
+  }
