@@ -28,6 +28,10 @@ function Vitrine() {
     }
   };
 
+  const handleConfig = () => {
+    navigate('/configurações');
+  }
+
   const codeRef = useRef(null); // Cria uma referência para o código
 
   function copyCode() {
@@ -80,7 +84,7 @@ function Vitrine() {
               {isPopupOpen && (
                 <div className={styles.popup}> {/* Pop-up com as informações do usuário */}
                   <p>Olá, {currentUser.displayName}</p>
-                  <button onClick={handleLogout} className={styles['btn-form-log']}>Sair</button>
+                  <button onClick={handleConfig} className={styles['btn-form-log']}>configurações</button>
                 </div>
               )}
             </div>

@@ -11,6 +11,16 @@
     border: 1px solid #ddd;
     border-radius: 8px;
   }
+
+  .btn-render{
+
+    padding: 10px;
+    border-radius: 10px; 
+    background-color: rgba(72,93,204,1);
+    cursor: pointer;
+    color: white
+    
+  }
   
   .code-block {
     font-family: monospace;
