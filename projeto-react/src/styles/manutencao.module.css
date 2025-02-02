@@ -227,3 +227,60 @@ body {
         margin-left: 3rem;
     }
   }
+
+  @media (max-width: 480px) {
+    .container {
+        padding: 4%;
+        background-color: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 20rem;
+        height: 40rem;
+    }
+    
+    .header-info {
+        display: flex;
+        width: 29%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+    
+    .nome-empresa {
+        margin-left: 3%;
+        font-size: 1.375rem;
+        font-family: "Secular One", sans-serif;
+        color: #735ff0;
+  
+    }
+    
+    .fot {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .titulo-txt {
+        margin-top: 5rem;
+        font-size: 1.7rem;
+        font-family: "Montserrat";
+        color: #735ff0;
+    }
+    
+    .titulo-p {
+        font-size: 1.2rem;
+        font-family: "Montserrat";
+        color: #7D7D7D;
+        margin-top: 1rem;
+    }
+    
+    .icone {
+        width: 23rem;
+        margin-left: 5rem;
+        margin-top: 3rem;
+    }
+  }
