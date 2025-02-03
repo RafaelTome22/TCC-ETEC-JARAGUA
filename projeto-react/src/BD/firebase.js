@@ -1,21 +1,21 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCgoB8KFH6XkVkLC-q_iIcQRdRxRDIlr-I",
-  authDomain: "tcc-etec-jaragua.firebaseapp.com",
-  databaseURL: "https://tcc-etec-jaragua-default-rtdb.firebaseio.com",
-  projectId: "tcc-etec-jaragua",
-  storageBucket: "tcc-etec-jaragua.appspot.com",
-  messagingSenderId: "107027055211",
-  appId: "1:107027055211:web:871cc1daed49786fc7272e",
-  measurementId: "G-XF38S8BG2F"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+// Inicializando o Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // Initialize Auth
+const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 export const db = getDatabase(app);
 export { auth, googleProvider };
