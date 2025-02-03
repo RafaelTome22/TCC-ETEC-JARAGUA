@@ -6,7 +6,7 @@ function UserSettings() {
   const [userData, setUserData] = useState({
     firstName: 'João',
     secondName: 'Silva',
-    CPF: '999.999.999-00',
+    CPF: '999.999.333-00',
     phone: '99999-9999',
     loremIpsum1: 'Texto 1',
     loremIpsum2: 'Texto 2'
